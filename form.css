@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+body,html{
+    background-image: url(images/form2.png);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+.button{
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 490px;
+  margin-left: 380px;
+  font-style: calibri;
+}
+.button:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.button:active{
+    background-color: pink;
+    color: black;
+}
