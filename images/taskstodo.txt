@@ -1,0 +1,5 @@
+1. form.html pe playerinfo()
+2. gameplay.html pe assignques()
+while score doesn't change, call scrape()
+3. call quescheck()
+4. Add functionality to calculate time when end game is pressed
