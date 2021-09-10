@@ -48,3 +48,11 @@ body,html{
   margin-left: -300px;
   font-style: calibri;
 }
+.submit:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.submit:active{
+    background-color: pink;
+    color: black;
+}
