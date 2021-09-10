@@ -21,7 +21,7 @@ body,html{
   font-size: 20px;
   text-align: center;
   transform: translateX(600px);
-  margin-top: 490px;
+  margin-top: 400px;
   margin-left: 380px;
   font-style: calibri;
 }
@@ -32,4 +32,19 @@ body,html{
 .button:active{
     background-color: pink;
     color: black;
+}
+.submit{
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 400px;
+  margin-left: -300px;
+  font-style: calibri;
 }
