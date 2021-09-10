@@ -21,8 +21,8 @@ body,html{
   font-size: 20px;
   text-align: center;
   transform: translateX(600px);
-  margin-top: 80px;
-  margin-left: 555px;
+  margin-top: 20px;
+  margin-left: 545px;
   font-style: calibri;
 }
 .endbutton:hover{
@@ -70,7 +70,7 @@ body,html{
   font-size: 20px;
   text-align: center;
   transform: translateX(600px);
-  margin-top: 40px;
+  margin-top: 30px;
   margin-left: 555px;
   border: none;
   border-radius: 20px;
@@ -94,7 +94,7 @@ body,html{
   font-size: 20px;
   text-align: center;
   transform: translateX(600px);
-  margin-top: 80px;
+  margin-top: 10px;
   margin-left: 555px;
   border: none;
   border-radius: 20px;
@@ -103,4 +103,21 @@ body,html{
 .smallbutton:hover{
     cursor: pointer;
     color: ;
+}
+.height{
+  background-color: white; 
+  height: 20px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 40px;
+  margin-left: 555px;
+  border: none;
+  border-radius: 20px;
+  font-style: calibri;
 }
