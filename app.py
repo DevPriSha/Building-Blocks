@@ -1,34 +1,52 @@
 #import stuff
 from flask import Flask, render_template, request
-import psycopg2
-import BeautifulSoup as bs4
+#import psycopg2
+from bs4 import BeautifulSoup as bs
 import requests
 import time
+import re
 
 #global variables
 CWID = ""
 height = 0
+
 app = Flask(__name__)
 
 @app.route('/')
-def home():
+def homepage():
     return render_template('homepage.html')
 
-@app.route('/form', methods=['GET', 'POST'])
-#fetch input from flask and perform check on ID
-def playerinfo():
+@app.route('/form/', methods=['GET', 'POST'])
+def form():
+    return render_template("form.html")
+
+@app.route('/instructions/', methods=['GET', 'POST'])
+def instructions():
+    return render_template("instructions.html")
+
+@app.route('/thankyou/', methods=['GET', 'POST'])
+def thankyou():
+    return render_template("thankyou.html")
+
+
+
+@app.route('/getplayerinfo', methods=['GET', 'POST'])
+def playerinfo(player_name, player_id):
+    name = player_name #add this to DB
     global CWID
-    CWID = "DevPriSha" #to be fetched from flask (form.html)
+    CWID = player_id
     userlink = "https://www.codewars.com/users/"+CWID+"/completed"
     res = requests.get(userlink)
     if res.status_code != 200:
-        #TODO return exception
-        return render_template("form.html")
-    #TODO add data to sql
+        return True
+    #TODO add data to sql (name and CWID)
     global height
     height = 0
+    return render_template("gamepage.html")
 
-@app.route('/gamepage', methods=['GET', 'POST'])
+@app.route('/gamepage/', methods=['GET', 'POST'])
+def gamepage():
+    return render_template("gamepage.html")
 def assignques(difficulty):
     pass #TODO assign question based on difficulty and return html statement to open ques in new tab
 
@@ -61,5 +79,7 @@ def quescheck(quesAssigned, difficulty):
         #update DB
         return
  
+if __name__ == "__main__":
+    app.run(debug=True)
 
 
