@@ -5,10 +5,14 @@ from bs4 import BeautifulSoup as bs
 import requests
 import time
 import re
+import easy 
+import random
 
 #global variables
 CWID = ""
 height = 0
+start_time = 0
+end_time = 0
 
 app = Flask(__name__)
 
@@ -26,7 +30,12 @@ def instructions():
 
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
-    return render_template("thankyou.html")
+    global start_time
+    global end_time
+    end_time = time.time()
+    total_time = end_time - start_time
+    #add total_time to DB
+    return render_template("../thankyou.html") #DOES NOT WORK
 
 
 
@@ -47,14 +56,37 @@ def playerinfo():
     #TODO add data to sql (name and CWID)
     global height
     height = 0
+    global start_time
+    start_time = time.time()
     return redirect(url_for('gamepage'))
+
+#----------------------------------------------------------------------
 
 @app.route('/gamepage/', methods=['GET', 'POST'])
 def gamepage():
     return render_template("gamepage.html")
-def assignques(difficulty):
-    pass #TODO assign question based on difficulty and return html statement to open ques in new tab
 
+@app.route('/assignques/', methods=['GET', 'POST'])
+def assignques():
+    difficulty = int(request.args.get('difficulty'))
+    easy_ques = easy.easy_dict
+    medium_ques = {}
+    hard_ques = {}
+    if difficulty == 1:
+        quesAssigned = random.choice(list(easy_ques.values()))
+    elif difficulty == 3:
+        quesAssigned = random.choice(medium_ques)
+    elif difficulty == 5:
+        quesAssigned = random.choice(hard_ques)
+    else:
+        print("INVALID DIFFICULTY")
+    
+    #TODO add check that same user does not get same ques
+    #add quesAssigned to DB
+
+    return quesAssigned
+
+@app.route('/scrapeScore/', methods=['GET', 'POST'])
 def scrapeScore():
     req_stats = requests.get("https://www.codewars.com/users/"+CWID+"/stats")
     stats_soup =  bs(req_stats.text, 'html.parser')
@@ -68,7 +100,7 @@ def scrapeScore():
 #while rank does not change, keep doing scrapeScore
 #else call quescheck()
 
-
+@app.route('/quescheck/', methods=['GET', 'POST'])
 def quescheck(quesAssigned, difficulty):
     req_quest = requests.get("https://www.codewars.com/users/"+CWID+"/completed")
     kata = bs(req_quest.content)
