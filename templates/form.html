@@ -6,6 +6,7 @@
 		Details
 	</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="username"><label for="participantname">Your Name: </label>
@@ -18,15 +19,19 @@
 	<div class="submit">
 		<input type="submit" name="buttonsubmit" id="buttoninput" value="SUBMIT AND START GAME">
 	</div>
-	<script>
-		function addplayerinfo() {
-			var playername = $("#participantname").val();
-			var playerid = $("#participantid").val();
-			$.get("/getplayerinfo", {player_name: playername, player_id: playerid}).done(function(data){
-				if (data==True){} //add exception dialogbox
-			});
-		}
-		//look how to trigger click to call above function
-	</script>
+
 </body>
+<script>
+	function addplayerinfo() {
+		var playername = $("#participantname").val();
+		var playerid = $("#participantid").val();
+		$.get("/getplayerinfo", {player_name: playername, player_id: playerid}).done(function(data){
+			if (data=="True"){} //add exception dialogbox
+			else {window.location = "/gamepage";}
+		});
+	}
+	$('#buttoninput').click(function(){
+		addplayerinfo();
+	});
+</script>
 </html>

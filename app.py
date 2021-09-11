@@ -1,5 +1,5 @@
 #import stuff
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 #import psycopg2
 from bs4 import BeautifulSoup as bs
 import requests
@@ -31,18 +31,23 @@ def thankyou():
 
 
 @app.route('/getplayerinfo', methods=['GET', 'POST'])
-def playerinfo(player_name, player_id):
+def playerinfo():
+    player_name = request.args.get('player_name')
+    player_id = request.args.get('player_id')
     name = player_name #add this to DB
     global CWID
     CWID = player_id
     userlink = "https://www.codewars.com/users/"+CWID+"/completed"
     res = requests.get(userlink)
     if res.status_code != 200:
-        return True
+        print("True")
+        return "True"
+    else:
+        print("Valid ID")
     #TODO add data to sql (name and CWID)
     global height
     height = 0
-    return render_template("gamepage.html")
+    return redirect(url_for('gamepage'))
 
 @app.route('/gamepage/', methods=['GET', 'POST'])
 def gamepage():
