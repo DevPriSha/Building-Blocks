@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+		HOME-PAGE
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+<body>
+	<a href={{ url_for('instructions') }}><div class="button1">INSTRUCTIONS</div></a>
+	<br><br>
+	<a href={{ url_for('form') }}><div class="button2">START GAME</div></a>
+
+</body>
+</html>

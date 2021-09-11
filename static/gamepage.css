@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+body,html{
+    background-image: url(images/final10.png);
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+.endbutton{
+  background-color: #CE2822; 
+  border: none;
+  color: black;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 20px;
+  margin-left: 545px;
+  font-style: calibri;
+}
+.endbutton:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.endbutton:active{
+    background-color: pink;
+    color: black;
+}
+.largebutton{
+  background-color: #F2FA16; 
+  color: black;
+  height: 80px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 40px;
+  margin-left: 555px;
+  border-radius: ;
+  border: none;
+  border-radius: 20px;
+  font-style: calibri;
+  padding-top: 70px;
+}
+.largebutton:hover{
+    cursor: pointer;
+    color: ;
+}
+.mediumbutton{
+  background-color: #FA9F16; 
+  border: none;
+  color: black;
+  height: 50px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 30px;
+  margin-left: 555px;
+  border: none;
+  border-radius: 20px;
+  font-style: calibri;
+  padding-top: 50px;
+}
+.mediumbutton:hover{
+    cursor: pointer;
+    color: ;
+}
+.smallbutton{
+  background-color: red; 
+  border: none;
+  color: black;
+  height: 20px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 10px;
+  margin-left: 555px;
+  border: none;
+  border-radius: 20px;
+  font-style: calibri;
+}
+.smallbutton:hover{
+    cursor: pointer;
+    color: ;
+}
+.height{
+  background-color: white; 
+  height: 20px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 40px;
+  margin-left: 555px;
+  border: none;
+  border-radius: 20px;
+  font-style: calibri;
+}

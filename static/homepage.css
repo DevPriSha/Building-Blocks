@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+body,html{
+    background-image: url("images/building20.png");
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+.button1{
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 450px;
+  margin-left: -20px;
+  font-style: calibri;
+}
+.button1:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.button1:active{
+    background-color: pink;
+    color: black;
+}
+.button2{
+  background-color: white; 
+  border: none;
+  color: black;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 10px;
+  margin-left: -8px;
+  font-style: calibri;
+}
+.button2:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.button2:active{
+    background-color: pink;
+    color: black;
+}
