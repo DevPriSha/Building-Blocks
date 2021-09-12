@@ -2,7 +2,7 @@
 from configparser import ConfigParser
 
 
-def config(filename='C:/Users/Dell/AppData/Local/Programs/Python/Python39/BuildingBlocks/database.ini', section='postgresql',unicode='utf-8'):
+def config(filename='C:/Users/Dell/OneDrive/Documents/GitHub/Building-Blocks/database.ini', section='postgresql',unicode='utf-8'):
     # create a parser
     parser = ConfigParser()
     # read config file
