@@ -31,12 +31,34 @@
 
 </body>
 <script>
+	var rank = 0;
+	var height = 0;
+
 	function assignques(level)
 	{
+		var questiongiven = "";
 		$.get("/assignques/", {difficulty: level}).done(function(data){
+			questiongiven = data;
 			window.open(data, "_blank");
 		});
+		// $.get("/scrapeScore").done(function(data){
+		// 	rank = data;
+		// });
+		// while(1){
+		// 	$.get("/scrapeScore").done(function(data){
+		// 	if(rank!=data){ 
+		// 		rank = data;
+		// 		break; 
+		// 	}
+		// });
+		// }
+		// $.get("/quescheck", {quesAssigned: questiongiven, difficulty: level}).done(function(data){
+		// 		if(data=="Quesyes"){
+		// 			//build block on wall of level height
+		// 		}
+		// });
 	}
+
 	$('#easyquestion').click(function(){
 		assignques(1);
 	});
@@ -48,6 +70,7 @@
 	});
 	$('#game_end').click(function(){
 		$.get("/thankyou").done(function(data){
+			window.location = "/thankyou";
 		});
 	});
 </script>

@@ -1,12 +1,14 @@
 #import stuff
-from flask import Flask, render_template, request, redirect, url_for
+import random
+import re
+import time
+
+import requests
 #import psycopg2
 from bs4 import BeautifulSoup as bs
-import requests
-import time
-import re
-import easy 
-import random
+from flask import Flask, redirect, render_template, request, url_for
+
+import easy
 
 #global variables
 CWID = ""
@@ -35,7 +37,7 @@ def thankyou():
     end_time = time.time()
     total_time = end_time - start_time
     #add total_time to DB
-    return render_template("../thankyou.html") #DOES NOT WORK
+    return render_template("thankyou.html") #DOES NOT WORK
 
 
 
@@ -101,7 +103,9 @@ def scrapeScore():
 #else call quescheck()
 
 @app.route('/quescheck/', methods=['GET', 'POST'])
-def quescheck(quesAssigned, difficulty):
+def quescheck():
+    quesAssigned = request.args.get("quesAssigned") #this is the link of question, ab isse iski key dhoondh lena please ;-;
+    difficulty = request.args.get("difficulty")
     req_quest = requests.get("https://www.codewars.com/users/"+CWID+"/completed")
     kata = bs(req_quest.content)
     stat_ = kata.find("div", attrs={"class": "w-full md:w-8/12"})
@@ -111,10 +115,11 @@ def quescheck(quesAssigned, difficulty):
         height+= difficulty
         isSolved = True
         #update DB
+        return "Quesyes"
     else:
         isSolved = False
         #update DB
-        return
+        return "Quesno"
  
 if __name__ == "__main__":
     app.run(debug=True)
