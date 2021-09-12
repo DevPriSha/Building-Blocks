@@ -2,6 +2,7 @@
 import random
 import re
 import time
+import main
 
 import requests
 #import psycopg2
@@ -34,9 +35,10 @@ def instructions():
 def thankyou():
     global start_time
     global end_time
+    global CWID
     end_time = time.time()
     total_time = end_time - start_time
-    #add total_time to DB
+    main.update_time(total_time,CWID)
     return render_template("thankyou.html") #DOES NOT WORK
 
 
@@ -55,7 +57,7 @@ def playerinfo():
         return "True"
     else:
         print("Valid ID")
-    #TODO add data to sql (name and CWID)
+    main.insert_GameInfo(player_id,player_name)
     global height
     height = 0
     global start_time
@@ -82,7 +84,7 @@ def assignques():
         quesAssigned = random.choice(hard_ques)
     else:
         print("INVALID DIFFICULTY")
-    
+
     #TODO add check that same user does not get same ques
     #add quesAssigned to DB
 
@@ -114,14 +116,13 @@ def quescheck():
         global height
         height+= difficulty
         isSolved = True
-        #update DB
+        main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+        main.update_height(height,CWID)
         return "Quesyes"
     else:
         isSolved = False
-        #update DB
+        main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
         return "Quesno"
- 
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-
