@@ -56,3 +56,10 @@ body,html{
     background-color: pink;
     color: black;
 }
+#form{
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+
+}
