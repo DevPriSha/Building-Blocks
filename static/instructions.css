@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: transparent;
 }
 body,html{
     background-image: url(images/instructions2.png);
