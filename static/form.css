@@ -10,11 +10,34 @@ body,html{
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
 }
-.submit{
+.button{
   background-color: white; 
   border: none;
   color: black;
   padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  transform: translateX(600px);
+  margin-top: 400px;
+  margin-left: 380px;
+  font-style: calibri;
+}
+.button:hover{
+    background-color: red;
+    cursor: pointer;
+}
+.button:active{
+    background-color: pink;
+    color: black;
+}
+.submit{
+  background-color: white; 
+  border: none;
+  color: black;
+  /*padding: 18px 48px;*/
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -33,12 +56,44 @@ body,html{
 #form{
     position: fixed;
     top: 45%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%, -40%);
 }
 #iduser{
     position: fixed;
-    top: 75%;
+    top: 78%;
     left: 80%;
     transform: translate(-50%,-40%);
+}
+#buttoninput{
+    height: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.username{
+    font-size: 2.5rem;
+    color: white;
+}
+#participantname{
+    height: 4rem;
+    border-color: black;
+    background-color: white;
+    width: 25rem;
+    font-size: 3rem;
+}
+.userid{
+    font-size: 2.5rem;
+    color: white;
+}
+#participantid{
+    height: 3.5rem;
+    border-color: black;
+    background-color: white;
+    width: 30rem;
+    font-size: 2.5rem;
+    left: 30%;
 }
