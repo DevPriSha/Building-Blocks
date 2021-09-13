@@ -1,4 +1,4 @@
-easy_dict = {
+quesSet = {
 	'MakeUpperCase' : 'https://www.codewars.com/kata/57a0556c7cb1f31ab3000ad7/train/',
 	'What is between' : 'https://www.codewars.com/kata/55ecd718f46fba02e5000029/train/',
 	'Opposites Attract' : 'https://www.codewars.com/kata/555086d53eac039a2a000083/train/',
@@ -17,3 +17,5 @@ easy_dict = {
 	'Find the smallest integer in the array' : 'https://www.codewars.com/kata/55a2d7ebe362935a210000b2/train/',
 
 }
+
+easy_dict = {k:v for v,k in quesSet.items()}

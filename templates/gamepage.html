@@ -33,6 +33,13 @@
 <script>
 	var rank = 0;
 	var height = 0;
+	var check = 0;
+
+	function ScrapeScore(){
+		$.get("/scrapeScore").done(function(data){
+			check = data;
+		});
+	}
 
 	function assignques(level)
 	{
@@ -41,22 +48,21 @@
 			questiongiven = data;
 			window.open(data, "_blank");
 		});
-		// $.get("/scrapeScore").done(function(data){
-		// 	rank = data;
-		// });
-		// while(1){
-		// 	$.get("/scrapeScore").done(function(data){
-		// 	if(rank!=data){ 
-		// 		rank = data;
-		// 		break; 
-		// 	}
-		// });
-		// }
-		// $.get("/quescheck", {quesAssigned: questiongiven, difficulty: level}).done(function(data){
-		// 		if(data=="Quesyes"){
-		// 			//build block on wall of level height
-		// 		}
-		// });
+		$.get("/scrapeScore").done(function(data){
+			rank = data;
+		});
+		var timer = setInterval(ScrapeScore(), 15000);
+		if(check!=rank)
+		{
+			clearInterval(timer);
+		}
+		$.get("/quescheck", {quesAssigned: questiongiven, difficulty: level}).done(function(data){
+				if(data!="Quesno"){
+					height = int(data)
+					console.log(height)
+					//build block on wall of level height
+				}
+		});
 	}
 
 	$('#easyquestion').click(function(){

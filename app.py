@@ -2,7 +2,7 @@
 import random
 import re
 import time
-import main
+#import main
 
 import requests
 #import psycopg2
@@ -38,7 +38,7 @@ def thankyou():
     global CWID
     end_time = time.time()
     total_time = end_time - start_time
-    main.update_time(total_time,CWID)
+    #main.update_time(total_time,CWID)
     return render_template("thankyou.html") #DOES NOT WORK
 
 
@@ -47,7 +47,7 @@ def thankyou():
 def playerinfo():
     player_name = request.args.get('player_name')
     player_id = request.args.get('player_id')
-    name = player_name #add this to DB
+    name = player_name 
     global CWID
     CWID = player_id
     userlink = "https://www.codewars.com/users/"+CWID+"/completed"
@@ -57,7 +57,7 @@ def playerinfo():
         return "True"
     else:
         print("Valid ID")
-    main.insert_GameInfo(player_id,player_name)
+    #main.insert_GameInfo(player_id,player_name)
     global height
     height = 0
     global start_time
@@ -77,7 +77,7 @@ def assignques():
     medium_ques = {}
     hard_ques = {}
     if difficulty == 1:
-        quesAssigned = random.choice(list(easy_ques.values()))
+        quesAssigned = random.choice(list(easy_ques.keys()))
     elif difficulty == 3:
         quesAssigned = random.choice(medium_ques)
     elif difficulty == 5:
@@ -98,30 +98,32 @@ def scrapeScore():
     rank = stat_soup.find("div", attrs={"class": "stat"}).text
     pattern = re.compile("\d+")
     rank = pattern.findall(rank)
-    rank = int(rank[0])
-    return rank
+    rank = rank[0]
+    return str(rank)
 
 #while rank does not change, keep doing scrapeScore
 #else call quescheck()
 
 @app.route('/quescheck/', methods=['GET', 'POST'])
 def quescheck():
-    quesAssigned = request.args.get("quesAssigned") #this is the link of question, ab isse iski key dhoondh lena please ;-;
+    global CWID
+    quesAssigned = request.args.get("quesAssigned") 
     difficulty = request.args.get("difficulty")
+    quesAssName = easy.easy_dict.get(quesAssigned,"")
     req_quest = requests.get("https://www.codewars.com/users/"+CWID+"/completed")
     kata = bs(req_quest.content)
     stat_ = kata.find("div", attrs={"class": "w-full md:w-8/12"})
     ques = stat_.find("a").text
-    if ques == quesAssigned:
+    if ques == quesAssName:
         global height
-        height+= difficulty
+        height+= int(difficulty)
         isSolved = True
-        main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-        main.update_height(height,CWID)
-        return "Quesyes"
+        #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+        #main.update_height(height,CWID)
+        return str(height)
     else:
         isSolved = False
-        main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+        #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
         return "Quesno"
 
 if __name__ == "__main__":
