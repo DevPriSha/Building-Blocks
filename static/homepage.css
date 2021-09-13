@@ -5,12 +5,13 @@
 }
 body,html{
     background-image: url("images/building20.png");
-    height: 100%;
     margin: 0;
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
+    overflow: hidden;
 }
 .button1{
+  position: relative;
   background-color: white; 
   border: none;
   color: black;
@@ -20,9 +21,6 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
-  margin-top: 450px;
-  margin-left: -20px;
   font-style: calibri;
 }
 .button1:hover{
@@ -33,7 +31,14 @@ body,html{
     background-color: pink;
     color: black;
 }
+#one{
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%,-40%);
+}
 .button2{
+    display: block;
   background-color: white; 
   border: none;
   color: black;
@@ -43,9 +48,6 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
-  margin-top: 10px;
-  margin-left: -8px;
   font-style: calibri;
 }
 .button2:hover{
@@ -55,4 +57,10 @@ body,html{
 .button2:active{
     background-color: pink;
     color: black;
+}
+#two{
+    position: fixed;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%,-40%);
 }

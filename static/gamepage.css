@@ -20,9 +20,9 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
+  /*transform: translateX(600px);
   margin-top: 20px;
-  margin-left: 545px;
+  margin-left: 560px;*/
   font-style: calibri;
 }
 .endbutton:hover{
@@ -32,6 +32,11 @@ body,html{
 .endbutton:active{
     background-color: pink;
     color: black;
+}
+#end{
+    position: fixed;
+    top: 87%;
+    left: 85%;
 }
 .largebutton{
   background-color: #F2FA16; 
@@ -44,11 +49,11 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
+  /*transform: translateX(600px);
   margin-top: 40px;
-  margin-left: 555px;
-  border-radius: ;
-  border: none;
+  margin-left: 555px;*/
+  /*border-radius: ;
+  border: none;*/
   border-radius: 20px;
   font-style: calibri;
   padding-top: 70px;
@@ -56,6 +61,11 @@ body,html{
 .largebutton:hover{
     cursor: pointer;
     color: ;
+}
+#large{
+    position: fixed;
+    top: 56%;
+    left: 85%;
 }
 .mediumbutton{
   background-color: #FA9F16; 
@@ -69,10 +79,10 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
+  /*transform: translateX(600px);
   margin-top: 30px;
-  margin-left: 555px;
-  border: none;
+  margin-left: 555px;*/
+  /*border: none;*/
   border-radius: 20px;
   font-style: calibri;
   padding-top: 50px;
@@ -80,6 +90,11 @@ body,html{
 .mediumbutton:hover{
     cursor: pointer;
     color: ;
+}
+#medium{
+    position: fixed;
+    top: 32%;
+    left: 85%;
 }
 .smallbutton{
   background-color: red; 
@@ -93,16 +108,21 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
+ /* transform: translateX(600px);
   margin-top: 10px;
-  margin-left: 555px;
-  border: none;
+  margin-left: 555px;*/
+  /*border: none;*/
   border-radius: 20px;
   font-style: calibri;
 }
 .smallbutton:hover{
     cursor: pointer;
     color: ;
+}
+#small{
+    position: fixed;
+    top: 20%;
+    left: 85%;
 }
 .height{
   background-color: white; 
@@ -114,10 +134,15 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
+  /*transform: translateX(600px);
   margin-top: 40px;
-  margin-left: 555px;
+  margin-left: 555px;*/
   border: none;
   border-radius: 20px;
   font-style: calibri;
+}
+#ht{
+    position: fixed;
+    top: 5%;
+    left: 85%;
 }
