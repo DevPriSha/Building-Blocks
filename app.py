@@ -2,6 +2,7 @@
 import random
 import re
 import time
+import json
 #import main
 
 import requests
@@ -16,6 +17,33 @@ CWID = ""
 height = 0
 start_time = 0
 end_time = 0
+
+def getHonor():
+    global CWID
+    req_stats = requests.get("https://www.codewars.com/api/v1/users/"+CWID).text
+    userData = json.loads(req_stats)
+    honor = userData["honor"]
+    return honor
+
+def checkques(quesAssigned, difficulty):
+    quescompleted = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
+    for ques in quescompleted["data"]:
+        quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
+        print(quesAssigned)
+        print(quesURL)
+        if quesURL == quesAssigned:
+            global height
+            height+= int(difficulty)
+            isSolved = True
+            #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            #main.update_height(height,CWID)
+            return str(height)
+        else:
+            isSolved = False
+            #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            return "Quesno"
+
+
 
 app = Flask(__name__)
 
@@ -39,7 +67,7 @@ def thankyou():
     end_time = time.time()
     total_time = end_time - start_time
     #main.update_time(total_time,CWID)
-    return render_template("thankyou.html") #DOES NOT WORK
+    return render_template("thankyou.html") 
 
 
 
@@ -92,39 +120,28 @@ def assignques():
 
 @app.route('/scrapeScore/', methods=['GET', 'POST'])
 def scrapeScore():
-    req_stats = requests.get("https://www.codewars.com/users/"+CWID+"/stats")
-    stats_soup =  bs(req_stats.text, 'html.parser')
-    stat_soup = stats_soup.find("div", attrs={"class": "px-4 pb-4"})
-    rank = stat_soup.find("div", attrs={"class": "stat"}).text
-    pattern = re.compile("\d+")
-    rank = pattern.findall(rank)
-    rank = rank[0]
-    return str(rank)
+    quesLink = request.args.get("quesgiven")
+    oghonor = getHonor()
+    time.sleep(15)
+    newHonor = getHonor()
+    while(oghonor == newHonor):
+        time.sleep(15)
+        newHonor = getHonor()
+        print(newHonor)
+    else:
+        return url_for("quescheck", quesAssigned = quesLink)
+
 
 #while rank does not change, keep doing scrapeScore
 #else call quescheck()
 
 @app.route('/quescheck/', methods=['GET', 'POST'])
-def quescheck():
-    global CWID
-    quesAssigned = request.args.get("quesAssigned") 
+def quescheck(quesAssigned):
+    print(quesAssigned)
     difficulty = request.args.get("difficulty")
-    quesAssName = easy.easy_dict.get(quesAssigned,"")
-    req_quest = requests.get("https://www.codewars.com/users/"+CWID+"/completed")
-    kata = bs(req_quest.content)
-    stat_ = kata.find("div", attrs={"class": "w-full md:w-8/12"})
-    ques = stat_.find("a").text
-    if ques == quesAssName:
-        global height
-        height+= int(difficulty)
-        isSolved = True
-        #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-        #main.update_height(height,CWID)
-        return str(height)
-    else:
-        isSolved = False
-        #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-        return "Quesno"
+    result = checkques(quesAssigned, difficulty)
+    if(result!="Quesno"):
+        return result 
 
 if __name__ == "__main__":
     app.run(debug=True)
