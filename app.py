@@ -41,7 +41,14 @@ def checkques(quesAssigned, difficulty):
         else:
             isSolved = False
             #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-            return "Quesno"
+    return "Quesno"
+
+def quescheck(quesAssigned, difficulty):
+    print(quesAssigned)
+    result = checkques(quesAssigned, difficulty)
+    print("height =" ,result)
+    return result 
+    
 
 
 
@@ -121,6 +128,7 @@ def assignques():
 @app.route('/scrapeScore/', methods=['GET', 'POST'])
 def scrapeScore():
     quesLink = request.args.get("quesgiven")
+    difficulty = request.args.get("difficulty")
     oghonor = getHonor()
     time.sleep(15)
     newHonor = getHonor()
@@ -129,19 +137,11 @@ def scrapeScore():
         newHonor = getHonor()
         print(newHonor)
     else:
-        return url_for("quescheck", quesAssigned = quesLink)
+        return quescheck(quesLink, difficulty)
 
 
 #while rank does not change, keep doing scrapeScore
 #else call quescheck()
-
-@app.route('/quescheck/', methods=['GET', 'POST'])
-def quescheck(quesAssigned):
-    print(quesAssigned)
-    difficulty = request.args.get("difficulty")
-    result = checkques(quesAssigned, difficulty)
-    if(result!="Quesno"):
-        return result 
 
 if __name__ == "__main__":
     app.run(debug=True)

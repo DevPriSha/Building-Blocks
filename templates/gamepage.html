@@ -42,7 +42,7 @@
 			window.open(data, "_blank");
 		});
 		console.log(questiongiven);
-		$.get("/scrapeScore",{quesgiven: questiongiven}).done(function(data){
+		$.get("/scrapeScore",{quesgiven: questiongiven, difficulty: level}).done(function(data){
 			height = parseInt(data);
 			console.log(height);
 			//build block on wall of "level" size and display total "height"
