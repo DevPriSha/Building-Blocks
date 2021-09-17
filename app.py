@@ -3,10 +3,10 @@ import random
 import re
 import time
 import json
-#import main
+import main
 
 import requests
-#import psycopg2
+import psycopg2
 from bs4 import BeautifulSoup as bs
 from flask import Flask, redirect, render_template, request, url_for
 
@@ -35,20 +35,20 @@ def checkques(quesAssigned, difficulty):
             global height
             height+= int(difficulty)
             isSolved = True
-            #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-            #main.update_height(height,CWID)
+            main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            main.update_height(height,CWID)
             return str(height)
         else:
             isSolved = False
-            #main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
     return "Quesno"
 
 def quescheck(quesAssigned, difficulty):
     print(quesAssigned)
     result = checkques(quesAssigned, difficulty)
     print("height =" ,result)
-    return result 
-    
+    return result
+
 
 
 
@@ -73,8 +73,8 @@ def thankyou():
     global CWID
     end_time = time.time()
     total_time = end_time - start_time
-    #main.update_time(total_time,CWID)
-    return render_template("thankyou.html") 
+    main.update_time(total_time,CWID)
+    return render_template("thankyou.html")
 
 
 
@@ -82,7 +82,7 @@ def thankyou():
 def playerinfo():
     player_name = request.args.get('player_name')
     player_id = request.args.get('player_id')
-    name = player_name 
+    name = player_name
     global CWID
     CWID = player_id
     userlink = "https://www.codewars.com/users/"+CWID+"/completed"
@@ -92,7 +92,7 @@ def playerinfo():
         return "True"
     else:
         print("Valid ID")
-    #main.insert_GameInfo(player_id,player_name)
+    main.insert_GameInfo(player_id,player_name)
     global height
     height = 0
     global start_time
