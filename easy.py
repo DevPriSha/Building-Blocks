@@ -18,4 +18,31 @@ quesSet = {
 
 }
 
-easy_dict = {k:v for v,k in quesSet.items()}
+newQuesSet = {
+    'Swap Values' : 'https://www.codewars.com/kata/5388f0e00b24c5635e000fc6/train/',
+    'Price of Mangoes' : 'https://www.codewars.com/kata/57a77726bb9944d000000b06/train/',
+    'Beginner Series #1 School Paperwork' : 'https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/',
+    'Will you make it?':'https://www.codewars.com/kata/5861d28f124b35723e00005e',
+    'Geometry Basics: Distance between points in 2D': 'https://www.codewars.com/kata/58dced7b702b805b200000be/train/',
+    'Keep Hydrated!': 'https://www.codewars.com/kata/582cb0224e56e068d800003c/train/',
+    'Grasshopper - Personalized Message' : 'https://www.codewars.com/kata/5772da22b89313a4d50012f7/train/',
+    'Remove exclamation marks':'https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/',
+    'Sum The Strings':'https://www.codewars.com/kata/5966e33c4e686b508700002d/train/',
+    'Cat years, Dog years': 'https://www.codewars.com/kata/5a6663e9fd56cb5ab800008b/train/',
+    'Gravity Flip': 'https://www.codewars.com/kata/5f70c883e10f9e0001c89673/train/',
+    'Count by X': 'https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/',
+    'Thinkful - Logic Drills: Traffic light': 'https://www.codewars.com/kata/58649884a1659ed6cb000072/train/',
+    'Fake Binary':'https://www.codewars.com/kata/57eae65a4321032ce000002d/train/',
+    'Holiday VIII - Duty Free':'https://www.codewars.com/kata/57e92e91b63b6cbac20001e5/train/',
+    'Remove String Spaces':'https://www.codewars.com/kata/57eae20f5500ad98e50002c5/train/',
+    'My head is at the wrong end!':'https://www.codewars.com/kata/56f699cd9400f5b7d8000b55/train/',
+    'Quarter of the year':'https://www.codewars.com/kata/5ce9c1000bab0b001134f5af/train/',
+    'Return Negative':'https://www.codewars.com/kata/55685cd7ad70877c23000102/train/',
+    'Convert a Boolean to a String':'https://www.codewars.com/kata/551b4501ac0447318f0009cd/train/',
+    'Alan Partridge II - Apple Turnover':'https://www.codewars.com/kata/580a094553bd9ec5d800007d/train/',
+    'Is it a number?':'https://www.codewars.com/kata/57126304cdbf63c6770012bd/train/',
+    'Count of positives / sum of negatives':'https://www.codewars.com/kata/576bb71bbbcf0951d5000044/train/'
+
+}
+
+easy_dict = {k:v for v,k in newQuesSet.items()}
