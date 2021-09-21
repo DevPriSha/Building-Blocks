@@ -73,6 +73,7 @@ body,html{
     padding-left: 1rem;
     text-align: center;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .username{
     font-size: 2.5rem;
