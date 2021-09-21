@@ -33,3 +33,9 @@ body,html{
     background-color: pink;
     color: black;
 }
+#home{
+    position: fixed;
+    top: 78%;
+    left: 78%;
+    transform: translate(-50%,-40%);
+}
