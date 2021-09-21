@@ -20,9 +20,6 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  transform: translateX(600px);
-  margin-top: 490px;
-  margin-left: 380px;
   font-style: calibri;
 }
 .button:hover{
