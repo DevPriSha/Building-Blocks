@@ -42,6 +42,7 @@ body,html{
     border-color: transparent;
     font-weight: bold;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .largebutton{
   background-color: #F2FA16; 
@@ -76,6 +77,7 @@ body,html{
     border-color: transparent;
     font-weight: bold;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .mediumbutton{
   background-color: #FA9F16; 
@@ -110,6 +112,7 @@ body,html{
     border-color: transparent;
     font-weight: bold;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .smallbutton{
   background-color: red; 
@@ -143,6 +146,7 @@ body,html{
     border-color: transparent;
     font-weight: bold;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .height{
   background-color: white; 
