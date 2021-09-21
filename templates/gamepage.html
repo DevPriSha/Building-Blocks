@@ -33,35 +33,37 @@
 <script>
 	var height = 0;
 	var questiongiven = "";
-	function assignques(level)
+	async function assignques(level)
 	{
 		
-		$.get("/assignques/", {difficulty: level}).done(function(data){
-			questiongiven = data;
-			console.log(questiongiven)
-			window.open(data, "_blank");
-		});
+		let questionobject = await fetch("/assignques?"+ new URLSearchParams({difficulty: level}));
+		let questiongiven = await questionobject.text();
+    	window.open(questiongiven, "_blank");
 		console.log(questiongiven);
-		$.get("/scrapeScore",{quesgiven: questiongiven, difficulty: level}).done(function(data){
-			height = parseInt(data);
-			console.log(height);
-			//build block on wall of "level" size and display total "height"
-		});
+
+		let data = await fetch("/scrapeScore?"+ new URLSearchParams( {quesgiven: questiongiven, difficulty: level}));
+		let datastr = await data.text();
+		height = parseInt(datastr);
+		console.log(height);
+		//build block that starts at height-level and ends at height
 	}
 
-	$('#easyquestion').click(function(){
-		assignques(1);
+	$("document").ready(() => {
+  		$('#easyquestion').click(() => {
+      		assignques('1');
+  		});
+  		$('#mediumquestion').click(() => {
+      		assignques('3');
+  		});
+  		$('#difficultquestion').click(() => {
+      		assignques('5');
+  		});
+
+  		$('#game_end').click(async () => {
+      		await fetch("/thankyou");
+      		window.location = "/thankyou";
+  		});
 	});
-	$('#mediumquestion').click(function(){
-		assignques(3);
-	});
-	$('#difficultquestion').click(function(){
-		assignques(5);
-	});
-	$('#game_end').click(function(){
-		$.get("/thankyou").done(function(data){
-			window.location = "/thankyou";
-		});
-	});
+
 </script>
 </html>

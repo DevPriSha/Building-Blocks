@@ -29,8 +29,8 @@ def checkques(quesAssigned, difficulty):
     quescompleted = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
     for ques in quescompleted["data"]:
         quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
-        print(quesAssigned)
-        print(quesURL)
+        print("quesassigned:", quesAssigned)
+        print("quesURL:", quesURL)
         if quesURL == quesAssigned:
             global height
             height+= int(difficulty)
@@ -49,8 +49,22 @@ def quescheck(quesAssigned, difficulty):
     print("height =" ,result)
     return result
 
+def uniqueques(dictques):
+    global CWID
+    completequesuser = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
+    while True:
+        quesAssigned = random.choice(list(dictques.keys()))
+        for ques in completequesuser["data"]:
+            quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
+            if quesAssigned == quesURL:
+                break
+        else:
+            print(quesAssigned)
+            return quesAssigned
+        
 
 
+#-----------------------------------------------------------------
 
 app = Flask(__name__)
 
@@ -108,29 +122,18 @@ def gamepage():
 @app.route('/assignques/', methods=['GET', 'POST'])
 def assignques():
     difficulty = int(request.args.get('difficulty'))
+    print(difficulty)
     easy_ques = easy.easy_dict
     medium_ques = {}
     hard_ques = {}
     if difficulty == 1:
-        quesAssigned = random.choice(list(easy_ques.keys()))
+        quesAssigned = uniqueques(easy_ques)
     elif difficulty == 3:
-        quesAssigned = random.choice(medium_ques)
+        quesAssigned = uniqueques(medium_ques)
     elif difficulty == 5:
-        quesAssigned = random.choice(hard_ques)
+        quesAssigned = uniqueques(hard_ques)
     else:
         print("INVALID DIFFICULTY")
-
-    ques_list = []
-
-    # for i in ques_list:
-    #     if (i == quesAssigned) :
-    #         quesAssigned = random.choice(list(easy_ques.keys()))
-        
-    # ques_list.append(quesAssigned)
-
-
-    #TODO add check that same user does not get same ques
-    #add quesAssigned to DB
 
     return quesAssigned
 
