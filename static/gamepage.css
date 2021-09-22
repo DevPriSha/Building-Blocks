@@ -171,8 +171,14 @@ body,html{
     left: 85%;
 }
 
-canvas { border: 1px solid black;
+/* canvas { border: 1px solid black;
     position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);}
+      transform: translate(-50%, -50%);} */
+.canvas {
+    border: 1px solid black;
+    position: fixed;
+    left: 28%;
+    bottom: 12%;
+}
