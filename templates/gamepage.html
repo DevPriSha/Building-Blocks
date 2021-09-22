@@ -52,9 +52,11 @@
 		let data = await fetch("/scrapeScore?"+ new URLSearchParams( {quesgiven: questiongiven, difficulty: level}));
 		let datastr = await data.text();
 		height = parseInt(datastr);
+		y = 500 - (height*10);
 		console.log(height);
 		//build block that starts at height-level and ends at height
 		if (height!=NaN){
+
 		if (canvas.getContext) 
 		{
   				var ctx = canvas.getContext('2d');

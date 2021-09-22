@@ -124,8 +124,8 @@ def assignques():
     difficulty = int(request.args.get('difficulty'))
     print(difficulty)
     easy_ques = easy.easy_dict
-    medium_ques = {}
-    hard_ques = {}
+    medium_ques = easy.easy_dict
+    hard_ques = easy.easy_dict
     if difficulty == 1:
         quesAssigned = uniqueques(easy_ques)
     elif difficulty == 3:
