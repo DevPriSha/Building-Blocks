@@ -12,6 +12,8 @@
 		0
 	</div>
 
+	<canvas id="DemoCanvas" width="200" height="500"></canvas> 
+
 	<div class="smallbutton" id="small">
 		<input type="submit" name="buttonsmall" id="easyquestion" value="SMALL">
 		<!-- SMALL -->
@@ -35,7 +37,13 @@
 	var questiongiven = "";
 	async function assignques(level)
 	{
-		
+		var y = 500 - (height*10);
+		level = parseInt(level);
+		if(y<0){
+			//print exception that max height overflow
+			return
+		}
+		var canvas = document.getElementById("DemoCanvas");
 		let questionobject = await fetch("/assignques?"+ new URLSearchParams({difficulty: level}));
 		let questiongiven = await questionobject.text();
     	window.open(questiongiven, "_blank");
@@ -46,7 +54,25 @@
 		height = parseInt(datastr);
 		console.log(height);
 		//build block that starts at height-level and ends at height
-		document.getElementById('ht').innerHTML=height;
+		if (height!=NaN){
+		if (canvas.getContext) 
+		{
+  				var ctx = canvas.getContext('2d');
+  				if (level == 5){
+  					ctx.fillStyle='#F2FA16'; }
+  				if (level == 3){
+    				ctx.fillStyle='#FA9F16'}
+  				if (level == 1){
+    				ctx.fillStyle='#FF0000'}// color of fill
+  				ctx.fillRect(0, y, 200, level*10); // create rectangle 
+  				ctx.beginPath();
+  				ctx.moveTo(0,y);
+  				ctx.lineTo(200,y);
+  				ctx.closePath();
+  				ctx.stroke();
+  			
+		}
+		document.getElementById('ht').innerHTML=height;}
 	}
 
 	$("document").ready(() => {
