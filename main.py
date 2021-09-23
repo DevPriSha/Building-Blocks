@@ -20,8 +20,6 @@ def get_height(id):
     height = Game_Info.get_height([id])
     return height
 
-def get_time(time):
-    time = Game_Info([time])
+def get_time(id):
+    time = Game_Info.get_time([id])
     return time
-
-
