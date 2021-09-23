@@ -177,8 +177,9 @@ body,html{
       left: 50%;
       transform: translate(-50%, -50%);} */
 .canvas {
-    border: 1px solid black;
+    /*color: transparent;*/
+    border: 1px solid transparent;
     position: fixed;
-    left: 28%;
+    left: 30%;
     bottom: 12%;
 }
