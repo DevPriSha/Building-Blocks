@@ -32,7 +32,7 @@ def checkques(quesAssigned, difficulty):
         print("quesassigned:", quesAssigned)
         print("quesURL:", quesURL)
         if quesURL == quesAssigned:
-            global height
+            height = main.get_height(CWID)
             height+= int(difficulty)
             isSolved = True
             main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
@@ -82,9 +82,9 @@ def instructions():
 
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
-    global start_time
-    global end_time
     global CWID
+    starttime = main.get_startTime(CWID)
+    start_time = float(starttime)
     end_time = time.time()
     total_time = end_time - start_time
     main.update_time(total_time,CWID)
@@ -107,10 +107,9 @@ def playerinfo():
     else:
         print("Valid ID")
     main.insert_GameInfo(player_id,player_name)
-    global height
-    height = 0
-    global start_time
+    main.update_height(0,CWID)
     start_time = time.time()
+    main.update_StartTime(start_time,CWID)
     return redirect(url_for('gamepage'))
 
 #----------------------------------------------------------------------
