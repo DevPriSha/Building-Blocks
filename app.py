@@ -8,18 +8,12 @@ import main
 import requests
 import psycopg2
 from bs4 import BeautifulSoup as bs
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, session
+from flask_session import Session
 
 import easy
 
-#global variables
-CWID = ""
-height = 0
-start_time = 0
-end_time = 0
-
-def getHonor():
-    global CWID
+def getHonor(CWID):
     req_stats = requests.get("https://www.codewars.com/api/v1/users/"+CWID).text
     userData = json.loads(req_stats)
     honor = userData["honor"]
@@ -49,8 +43,7 @@ def quescheck(quesAssigned, difficulty):
     print("height =" ,result)
     return result
 
-def uniqueques(dictques):
-    global CWID
+def uniqueques(dictques, CWID):
     completequesuser = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
     while True:
         quesAssigned = random.choice(list(dictques.keys()))
@@ -67,6 +60,9 @@ def uniqueques(dictques):
 #-----------------------------------------------------------------
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 @app.route('/')
 def homepage():
@@ -82,7 +78,7 @@ def instructions():
 
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
-    global CWID
+    CWID = session.get("ID")
     starttime = main.get_startTime(CWID)
     start_time = float(starttime)
     end_time = time.time()
@@ -97,8 +93,9 @@ def playerinfo():
     player_name = request.args.get('player_name')
     player_id = request.args.get('player_id')
     name = player_name
-    global CWID
     CWID = player_id
+    session["ID"]=CWID
+    session["NAME"]=name
     userlink = "https://www.codewars.com/users/"+CWID+"/completed"
     res = requests.get(userlink)
     if res.status_code != 200:
@@ -120,17 +117,18 @@ def gamepage():
 
 @app.route('/assignques/', methods=['GET', 'POST'])
 def assignques():
+    CWID = session.get("ID")
     difficulty = int(request.args.get('difficulty'))
     print(difficulty)
     easy_ques = easy.easy_dict
     medium_ques = easy.easy_dict
     hard_ques = easy.easy_dict
     if difficulty == 1:
-        quesAssigned = uniqueques(easy_ques)
+        quesAssigned = uniqueques(easy_ques, CWID)
     elif difficulty == 3:
-        quesAssigned = uniqueques(medium_ques)
+        quesAssigned = uniqueques(medium_ques, CWID)
     elif difficulty == 5:
-        quesAssigned = uniqueques(hard_ques)
+        quesAssigned = uniqueques(hard_ques, CWID)
     else:
         print("INVALID DIFFICULTY")
 
@@ -138,14 +136,15 @@ def assignques():
 
 @app.route('/scrapeScore/', methods=['GET', 'POST'])
 def scrapeScore():
+    CWID = session.get("ID")
     quesLink = request.args.get("quesgiven")
     difficulty = request.args.get("difficulty")
-    oghonor = getHonor()
-    time.sleep(15)
-    newHonor = getHonor()
+    oghonor = getHonor(CWID)
+    time.sleep(5)
+    newHonor = getHonor(CWID)
     while(oghonor == newHonor):
-        time.sleep(15)
-        newHonor = getHonor()
+        time.sleep(5)
+        newHonor = getHonor(CWID)
         print(newHonor)
     else:
         return quescheck(quesLink, difficulty)
