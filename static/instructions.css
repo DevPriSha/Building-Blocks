@@ -32,7 +32,7 @@ body,html{
 }
 #home{
     position: fixed;
-    top: 78%;
+    top: 82%;
     left: 78%;
     transform: translate(-50%,-40%);
 }
