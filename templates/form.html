@@ -9,17 +9,40 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<div id="form">
-		<div class="username"><label for="participantname">Your Name: </label>
-		<input type="text" name="participantname" id="participantname" ></div>
-		<br><br>
+	<section>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="box">
+			<div class="square" style="--i:0;"></div>
+			<div class="square" style="--i:1;"></div>
+			<div class="square" style="--i:2;"></div>
+			<div class="square" style="--i:3;"></div>
+			<div class="square" style="--i:4;"></div>
+			<div class="square" style="--i:5;"></div>
+			<div class="square" style="--i:6;"></div>
+			<div class="square" style="--i:7;"></div>
+			<div class="square" style="--i:8;"></div>
+			<div class="square" style="--i:9;"></div>
 
-		<div class="userid"><label for="participantid">Your CodeWars ID: </label>
-		<input type="url" name="participantid" id="participantid" placeholder="For eg: chandana-21"></div></div>
-
-		<div class="submit" id="iduser">
-			<input type="submit" name="buttonsubmit" id="buttoninput" value="SUBMIT AND START GAME">
+			<div class="container">
+				<div class="form" id="form">
+					<h2>Enter Your Details</h2>
+					<form>
+						<div class="inputBox">
+							<input type="text" name="participantname" id="participantname" placeholder="Name">
+						</div>
+						<div class="inputBox">
+							<input type="url" name="participantid" id="participantid" placeholder="Codewars ID: Eg: chandana-21">
+						</div><br><br><br>
+						<div class="inputBox" id="iduser">
+							<input type="submit" name="buttonsubmit" id="buttoninput" value="Start Game">
+						</div>
+					</form>
+				</div>				
+			</div>
 		</div>
+	</section>
 
 </body>
 <script>
