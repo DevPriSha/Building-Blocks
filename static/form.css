@@ -23,21 +23,21 @@ section .color:nth-child(1){
 	width: 1000px;
 	height: 800px;
 	right: 50px;
-	background: #FA0909;
+	background-color: #FA0909;
 }
 section .color:nth-child(2){
 	top: 50px;
 	left: 20px;
 	width: 800px;
 	height: 800px;
-	background: #100101;
+	background-color: #100101;
 }
 section .color:nth-child(3){
 	top: 300px;
 	right: 80px;
 	width: 600px;
 	height: 1000px;
-	background: #88FE94;
+	background-color: #88FE94;
 }
 .box{
 	position: relative;
