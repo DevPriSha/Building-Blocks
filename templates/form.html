@@ -6,7 +6,6 @@
 		Details
 	</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	<section>
@@ -28,13 +27,18 @@
 			<div class="container">
 				<div class="form" id="form">
 					<h2>Enter Your Details</h2>
-					<form>
+					<form action="" method ="post">
 						<div class="inputBox">
 							<input type="text" name="participantname" id="participantname" placeholder="Name">
 						</div>
 						<div class="inputBox">
-							<input type="url" name="participantid" id="participantid" placeholder="Codewars ID: Eg: chandana-21">
-						</div><br><br><br>
+							<input type="text" name="participantid" id="participantid" placeholder="Codewars ID: Eg: chandana-21">
+						</div>
+						<!-- Add CSS for this <p> tag -->
+						{% if message %}
+ 					       <p>{{ message }}</p> 
+ 					    {% endif %}
+						<br><br><br>
 						<div class="inputBox" id="iduser">
 							<input type="submit" name="buttonsubmit" id="buttoninput" value="Start Game">
 						</div>
@@ -45,17 +49,4 @@
 	</section>
 
 </body>
-<script>
-	function addplayerinfo() {
-		var playername = $("#participantname").val();
-		var playerid = $("#participantid").val();
-		$.get("/getplayerinfo", {player_name: playername, player_id: playerid}).done(function(data){
-			if (data=="True"){} //add exception dialogbox
-			else {window.location = "/gamepage";}
-		});
-	}
-	$('#buttoninput').click(function(){
-		addplayerinfo();
-	});
-</script>
 </html>

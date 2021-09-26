@@ -1,17 +1,23 @@
 #import stuff
 import random
-import re
 import time
 import json
-import main
-
 import requests
-import psycopg2
-from bs4 import BeautifulSoup as bs
-from flask import Flask, redirect, render_template, request, url_for, session
+
+#DB module
+try:
+    import main
+except:
+    print("Could not import DB modules")
+
+#flask modules
+from flask import Flask, render_template, request, session
 from flask_session import Session
 
+#question files
 import easy
+#import medium
+#import hard
 
 def getHonor(CWID):
     req_stats = requests.get("https://www.codewars.com/api/v1/users/"+CWID).text
@@ -19,27 +25,36 @@ def getHonor(CWID):
     honor = userData["honor"]
     return honor
 
-def checkques(quesAssigned, difficulty):
+def checkques(quesAssigned, difficulty, CWID):
     quescompleted = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
     for ques in quescompleted["data"]:
         quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
         print("quesassigned:", quesAssigned)
         print("quesURL:", quesURL)
         if quesURL == quesAssigned:
-            height = main.get_height(CWID)
+            try:
+                height = main.get_height(CWID)
+            except:
+                print("Could not fetch height")
             height+= int(difficulty)
             isSolved = True
-            main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-            main.update_height(height,CWID)
+            try:
+                main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+                main.update_height(height,CWID)
+            except:
+                print("Could not update question status")
             return str(height)
         else:
             isSolved = False
-            main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            try:
+                main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
+            except:
+                print("Could not update question status")
     return "Quesno"
 
-def quescheck(quesAssigned, difficulty):
+def quescheck(quesAssigned, difficulty,CWID):
     print(quesAssigned)
-    result = checkques(quesAssigned, difficulty)
+    result = checkques(quesAssigned, difficulty,CWID)
     print("height =" ,result)
     return result
 
@@ -68,10 +83,6 @@ Session(app)
 def homepage():
     return render_template('homepage.html')
 
-@app.route('/form/', methods=['GET', 'POST'])
-def form():
-    return render_template("form.html")
-
 @app.route('/instructions/', methods=['GET', 'POST'])
 def instructions():
     return render_template("instructions.html")
@@ -79,41 +90,47 @@ def instructions():
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
     CWID = session.get("ID")
-    starttime = main.get_startTime(CWID)
-    start_time = float(starttime)
-    end_time = time.time()
-    total_time = end_time - start_time
-    main.update_time(total_time,CWID)
+    try:
+        starttime = main.get_startTime(CWID)
+        start_time = float(starttime)
+        end_time = time.time()
+        total_time = end_time - start_time
+        main.update_time(total_time,CWID)
+    except:
+        print("Could not update time")
     return render_template("thankyou.html")
 
 
 
-@app.route('/getplayerinfo', methods=['GET', 'POST'])
-def playerinfo():
-    player_name = request.args.get('player_name')
-    player_id = request.args.get('player_id')
-    name = player_name
-    CWID = player_id
-    session["ID"]=CWID
-    session["NAME"]=name
-    userlink = "https://www.codewars.com/users/"+CWID+"/completed"
-    res = requests.get(userlink)
-    if res.status_code != 200:
-        print("True")
-        return "True"
-    else:
-        print("Valid ID")
-    main.insert_GameInfo(player_id,player_name)
-    main.update_height(0,CWID)
-    start_time = time.time()
-    main.update_StartTime(start_time,CWID)
-    return redirect(url_for('gamepage'))
+@app.route('/form/', methods=['GET', 'POST'])
+def form():
+    if request.method == 'POST':
+        player_name = request.form.get('participantname')
+        player_id = request.form.get('participantid')
+        name = player_name
+        CWID = player_id
+        session["ID"]=CWID
+        session["NAME"]=name
+        userlink = "https://www.codewars.com/users/"+CWID+"/completed"
+        res = requests.get(userlink)
+        if res.status_code != 200:
+            print("True")
+            return render_template("form.html", message = "Enter a valid CodeWars ID")
+        else:
+            print("Valid ID")
+            try:
+                main.insert_GameInfo(player_id,player_name)
+                main.update_height(0,CWID)
+                start_time = time.time()
+                main.update_StartTime(start_time,CWID)
+            except:
+                print("Not updated to DBMS")
+                pass
+            return render_template("gamepage.html")
+    return render_template("form.html", message = "")
 
 #----------------------------------------------------------------------
 
-@app.route('/gamepage/', methods=['GET', 'POST'])
-def gamepage():
-    return render_template("gamepage.html")
 
 @app.route('/assignques/', methods=['GET', 'POST'])
 def assignques():
@@ -147,11 +164,7 @@ def scrapeScore():
         newHonor = getHonor(CWID)
         print(newHonor)
     else:
-        return quescheck(quesLink, difficulty)
-
-
-#while rank does not change, keep doing scrapeScore
-#else call quescheck()
+        return quescheck(quesLink, difficulty, CWID)
 
 if __name__ == "__main__":
     app.run(debug=True)
