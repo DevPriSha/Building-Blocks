@@ -8,9 +8,25 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
 </head>
 <body>
+	<section>
+		<h2>INNERVE 2021</h2>
+		<div class="banner">
+			<div class="blocks"></div>
+		</div>
+	</section>
 	<a href={{ url_for('instructions') }}><div class="button1" id="one">INSTRUCTIONS</div></a>
 	<br><br>
 	<a href={{ url_for('form') }}><div class="button2" id="two">START GAME</div></a>
+	
+	<script>
+		const banner=document.getElementsByClassName('banner')[0];
+		const blocks=document.getElementsByClassName('blocks');
+
+		for(var i=1; i<400; i++){
+			banner.innerHTML+="<div class='blocks'></div>";
+			blocks[i].style.animationDelay=`${i*0.08}s`;
+		}
+	</script>
 
 </body>
 </html>
