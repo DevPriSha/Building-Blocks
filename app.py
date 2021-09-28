@@ -29,13 +29,14 @@ def checkques(quesAssigned, difficulty, CWID):
     quescompleted = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
     for ques in quescompleted["data"]:
         quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
-        print("quesassigned:", quesAssigned)
-        print("quesURL:", quesURL)
+        #print("quesassigned:", quesAssigned)
+        #print("quesURL:", quesURL)
         if quesURL == quesAssigned:
             try:
                 height = main.get_height(CWID)
             except:
                 print("Could not fetch height")
+                height = session.get("height")
             height+= int(difficulty)
             isSolved = True
             try:
@@ -43,6 +44,7 @@ def checkques(quesAssigned, difficulty, CWID):
                 main.update_height(height,CWID)
             except:
                 print("Could not update question status")
+                session["height"] = height
             return str(height)
         else:
             isSolved = False
@@ -125,7 +127,7 @@ def form():
                 main.update_StartTime(start_time,CWID)
             except:
                 print("Not updated to DBMS")
-                pass
+                session["height"] = 0
             return render_template("gamepage.html")
     return render_template("form.html", message = "")
 

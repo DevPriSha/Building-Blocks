@@ -51,14 +51,13 @@
 
 		let data = await fetch("/scrapeScore?"+ new URLSearchParams( {quesgiven: questiongiven, difficulty: level}));
 		let datastr = await data.text();
-		height = parseInt(datastr);
-		y = 500 - (height*10);
-		console.log(height);
-
-		if(height==NaN)
+		if(datastr == "Quesno")
 		{
 			return;
 		}
+		height = parseInt(datastr);
+		y = 500 - (height*10);
+		console.log(height);
 		
 		if (height!=NaN){
 		if (canvas.getContext) 
