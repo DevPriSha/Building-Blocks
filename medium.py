@@ -33,3 +33,6 @@ medium = {
     'John and Ann sign up for Codewars':'https://www.codewars.com/kata/57591ef494aba64d14000526/train/',
     'Find the smallest':'https://www.codewars.com/kata/573992c724fc289553000e95/train/'
 }
+
+
+med_dict = {k:v for v,k in medium.items()}

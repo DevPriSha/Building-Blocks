@@ -16,3 +16,5 @@ hard = {
     'Centre of attention':'https://www.codewars.com/kata/58c8c723df10450b21000024/train/',
     'The boolean order':'https://www.codewars.com/kata/59eb1e4a0863c7ff7e000008/train/'
 }
+
+hard_dict = {k:v for v,k in hard.items()}
