@@ -46,12 +46,6 @@ def checkques(quesAssigned, difficulty, CWID):
                 print("Could not update question status")
                 session["height"] = height
             return str(height)
-        else:
-            isSolved = False
-            try:
-                main.insert_QuestionSolved(CWID,quesAssigned,isSolved)
-            except:
-                print("Could not update question status")
     return "Quesno"
 
 def quescheck(quesAssigned, difficulty,CWID):
