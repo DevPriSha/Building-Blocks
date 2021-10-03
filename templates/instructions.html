@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='instructions.css') }}">
 </head>
 <body>
-	<section>
+	<section class="container">
 		<div class="bgPulse">
 			<span></span>
 			<span></span>
@@ -21,7 +21,7 @@
 			<div class="box">
 				<div class="form">
 					<div class="header"><h2>INSTRUCTIONS</h2></div><div class="follow">	
-					<ol>
+					<ol type="a">
 						<li>1. You have to build a wall using the given blocks.👷</li>
 						<li>2. Before using any of the blocks, you have to answer a coding question according to the size of the block. If answered correctly,the block will be added to the stack.🧐
 							<ul>
@@ -36,7 +36,8 @@
 					<a href={{ url_for('homepage' ) }}><div class="button" id="home">BACK TO HOMEPAGE</div></a>
 				</div>
 			</div>
-	</section>	
+	</section>
+	<div class="overlay"></div>
 <!-- 	<a href={{ url_for('homepage' ) }}><div class="button" id="home">BACK TO HOMEPAGE</div></a> -->
 
 </body>
