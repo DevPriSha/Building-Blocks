@@ -33,7 +33,8 @@ section .color:nth-child(2){
 	left: 20px;
 	width: 800px;
 	height: 800px;
-	background-color: #100101;\-webkit-appearance: none;
+	background-color: #100101;
+	-webkit-appearance: none;
     	-moz-appearance: none;
     	appearance: none;
 }
