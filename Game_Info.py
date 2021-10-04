@@ -1,13 +1,25 @@
 import psycopg2
 from connect_step1 import config
 
-def insert(info_list):
+def insert(id,name):
+
+    command1 = "SELECT codewarsid FROM game_info WHERE codewarsid=%s;"
+    command2 = "INSERT INTO game_info(codewarsid,name) VALUES(%s,%s);"
+    command3 = "UPDATE game_info SET name=%s WHERE codewarsid=%s;"
+
     conn = None
     try:
         params = config()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        cur.execute("INSERT INTO game_info(codewarsid,name) VALUES(%s,%s);",info_list)
+
+        cur.execute(command1,id)
+        codewarsid = cur.fetchone()
+        if(codewarsid == None):
+            cur.execute(command2,[id,name])
+        else:
+            cur.execute(command3,[name,id])
+
         conn.commit()
         cur.close()
     except(Exception,psycopg2.DatabaseError) as error:
