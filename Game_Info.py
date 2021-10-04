@@ -13,7 +13,7 @@ def insert(id,name):
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
 
-        cur.execute(command1,id)
+        cur.execute(command1,[id])
         codewarsid = cur.fetchone()
         if(codewarsid == None):
             cur.execute(command2,[id,name])
