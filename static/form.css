@@ -24,13 +24,18 @@ section .color:nth-child(1){
 	height: 800px;
 	right: 50px;
 	background-color: #FA0909;
+	-webkit-appearance: none;
+    	-moz-appearance: none;
+    	appearance: none;
 }
 section .color:nth-child(2){
 	top: 50px;
 	left: 20px;
 	width: 800px;
 	height: 800px;
-	background-color: #100101;
+	background-color: #100101;\-webkit-appearance: none;
+    	-moz-appearance: none;
+    	appearance: none;
 }
 section .color:nth-child(3){
 	top: 300px;
@@ -38,6 +43,9 @@ section .color:nth-child(3){
 	width: 600px;
 	height: 1000px;
 	background-color: #88FE94;
+	-webkit-appearance: none;
+    	-moz-appearance: none;
+    	appearance: none;
 }
 .box{
 	position: relative;
