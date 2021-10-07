@@ -22,7 +22,7 @@ newQuesSet = {
     'Swap Values' : 'https://www.codewars.com/kata/5388f0e00b24c5635e000fc6/train/',
     'Price of Mangoes' : 'https://www.codewars.com/kata/57a77726bb9944d000000b06/train/',
     'Beginner Series #1 School Paperwork' : 'https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/',
-    'Will you make it?':'https://www.codewars.com/kata/5861d28f124b35723e00005e',
+    'Will you make it?':'https://www.codewars.com/kata/5861d28f124b35723e00005e/train/',
     'Geometry Basics: Distance between points in 2D': 'https://www.codewars.com/kata/58dced7b702b805b200000be/train/',
     'Keep Hydrated!': 'https://www.codewars.com/kata/582cb0224e56e068d800003c/train/',
     'Grasshopper - Personalized Message' : 'https://www.codewars.com/kata/5772da22b89313a4d50012f7/train/',
