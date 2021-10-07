@@ -2,7 +2,7 @@ import Game_Info
 import Question_Solved
 
 def insert_GameInfo(id,name):
-    Game_Info.insert(id,name)
+    Game_Info.insert([id,name])
 
 def insert_QuestionSolved(id,question_name,solved):
     Question_Solved.insert([id,question_name,solved])
