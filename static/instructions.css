@@ -132,7 +132,7 @@ section{
 .box{
 	position: relative;
 	padding: 80px;
-	width: 80vw;
+	width: 83vw;
 	height: 70vh;
 	display: flex;
 	justify-content: center;
@@ -141,7 +141,8 @@ section{
 	border-radius: 6px;
 	box-shadow: 0 5px 35px rgba(0,0,0,0,2);
 	color: white;
-	transform: translate(5%);
+/* 	transform: translate(5%); */
+	transform: translateY(3%) translateX(3%);
 }
 .box::after{
 	content: '';
