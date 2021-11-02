@@ -1,0 +1,88 @@
+*{
+	margin: 0;
+	font-family: arial;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background: #323232;
+}
+.bg{
+	position: relative;
+	widows: 100%;
+	height: 90vh;
+	background: #D81717;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.bg h2{
+	position: relative;
+	color: #fff;
+	font-size: 5em;
+}
+.skewed1{
+	position: absolute;
+	bottom: -100%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background-color: #323232;
+	transform: skewY(-10deg);
+	transform-origin: top left;
+}
+.skewed2{
+	position: absolute;
+	bottom: -100%;
+	right: 50%;
+	width: 100%;
+	height: 100%;
+	background-color: #323232;
+	transform: skewY(10deg);
+	transform-origin: top right;
+}
+section{
+	padding: 100px;
+}
+section .content h2{
+	color: #87FE1E;
+	font-size: 3em;
+	margin-bottom: 10px;
+	transition: 0.5s;
+	transform-origin: left;
+	transform: scaleX(1);
+}
+section .content h4{
+	color: #FEBE6B;
+	font-size: 2em;
+	margin-bottom: 10px;
+	transition: 0.5s;
+	transform-origin: right;
+	transform: scaleX(1);
+}
+section .content p{
+	transition: 1s;
+}
+.button1{
+  background-color: white; 
+  border: none;
+  color: black;
+  margin-left: 5em;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-align: center;
+  font-style: calibri;
+}
+.button:hover{
+    background-color: #87FE1E;
+    cursor: pointer;
+}
+.button:active{
+    background-color: white;
+    color: black;
+}
+
