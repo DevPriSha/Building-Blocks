@@ -1,70 +1,3 @@
-/* *{
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-}
-body,html{
-    background-image: url("images/building20.png");
-    margin: 0;
-    background-repeat: no-repeat;
-    background-size: 100vw 100vh;
-    overflow: hidden;
-}
-.button1{
-  position: relative;
-  background-color: white; 
-  border: none;
-  color: black;
-  padding: 18px 48px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  text-align: center;
-  font-style: calibri;
-}
-.button1:hover{
-    background-color: red;
-    cursor: pointer;
-}
-.button1:active{
-    background-color: pink;
-    color: black;
-}
-#one{
-    position: fixed;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%,-40%);
-}
-.button2{
-    display: block;
-  background-color: white; 
-  border: none;
-  color: black;
-  padding: 18px 48px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  text-align: center;
-  font-style: calibri;
-}
-.button2:hover{
-    background-color: red;
-    cursor: pointer;
-}
-.button2:active{
-    background-color: pink;
-    color: black;
-}
-#two{
-    position: fixed;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%,-40%);
-} */
-
 *{
     margin: 0;
     padding: 0;
@@ -148,19 +81,39 @@ section h2{
   font-style: calibri;
   font-weight: bold;
 }
-.button1:hover{
-    background-color: black;
-    cursor: pointer;
-}
-.button1:active{
-    background-color: white;
-    color: black;
-}
 #one{
     position: fixed;
     top: 70vh;
     left: 49.5vw;
     transform: translate(-50%,-40%);
+}
+.button1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: black;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.button1:hover::before,
+.button1:focus::before {
+  transform: scaleX(1);
+}
+.button1 {
+  transition: color 300ms ease-in-out;
+  z-index: 1;
+}
+.button1:hover,
+.button1:focus {
+  color: white;
+}
+.button1:hover{
+    cursor: pointer;
 }
 .button2{
   display: block;
@@ -176,17 +129,37 @@ section h2{
   font-style: calibri;
   font-weight: bold;
 }
-.button2:hover{
-    background-color: black;
-    cursor: pointer;
-}
-.button2:active{
-    background-color: white;
-    color: black;
-}
 #two{
     position: fixed;
     top: 85vh;
     left: 50%;
     transform: translate(-50%,-40%);
+}
+.button2::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    background-color: black;
+    transition: transform 300ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.button2:hover::before,
+.button2:focus::before {
+  transform: scaleX(1);
+}
+.button2 {
+  transition: color 300ms ease-in-out;
+  z-index: 1;
+}
+.button2:hover,
+.button2:focus {
+  color: white;
+}
+.button2:hover{
+    cursor: pointer;
 }
