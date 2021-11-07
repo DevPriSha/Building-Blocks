@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>GAME TUTORIAL</title>
+	<link rel="stylesheet" type="text/css" href="style.css"> 
+</head>
+<body>
+	<section class="bg">
+		<h2>GAME TUTORIAL</h2>
+		<span class="skewed1"></span>
+		<span class="skewed2"></span>
+	</section>
+	<section>
+		<div class="content">
+			<h2>Step-1: Pick a question !!</h2>
+			<h4>Click on any of the blocks to start solving the question.</h4><br>
+			<p>
+				<!-- <img src="images/Easy Question.png" width="750px" height="350px"> -->
+				<img src="{{url_for(static, Easy Question.png)}}" width="750px" height="350px">
+			</p></div>
+	</section>
+
+	<section>
+		<div class="content">
+		<h2>Step-2: Apply your wits and start solving !!</h2>
+		<h4>Read the prompt, select your language and start solving the question. </h4><br>
+		<p>
+			<!-- <img src="images/step2.png" width="750px" height="350px"> -->
+			<img src="{{url_for(static, step2.png)}}" width="750px" height="350px">
+		</p></div>
+	</section>
+
+	<section>
+		<div class="content">
+		<h2>Step-3: Check if you passed all the test cases, click "TEST"</h2>
+		<h4>See if your solution passes all the test cases.</h4><br>
+		<p>
+			<!-- <img src="images/Click.png" width="750px" height="350px"> -->
+			<img src="{{url_for(static, Click.png)}}" width="750px" height="350px">
+		</p></div>
+	</section>
+
+	<section>
+		<div class="content">
+		<h2>Step-4: If you passed all the tests, click "ATTEMPT"</h2>
+		<h4>To submit your answer click the Attempt button.</h4><br>
+		<p>
+			<!-- <img src="images/Attempt.png" width="750px" height="350px"> -->
+			<img src="{{url_for(static, Attempt.png)}}" width="750px" height="350px">
+		</p></div>
+	</section>
+
+	<section>
+		<div class="content">
+		<h2>Step-5: Now, its time for the FINAL SUBMISSION, click "SUBMIT"</h2>
+		<h4>Click on the submit button to add a block to your wall.<br>BUT BE CAREFUL!! If you don't click the submit button your block will not be added to your wall.</h4><br>
+		<p>
+			<!-- <img src="images/Submit.png" width="750px" height="350px"> -->
+			<img src="{{url_for(static, Submit.png)}}" width="750px" height="350px">
+		</p></div>
+	</section>
+
+	<section>
+		<div class="content">
+		<h2><blink>Step-6: CONGRATULATIONS!! Now you have successfully added a block to your wall. Now, repeat the above steps to build the highest wall and win amazing prizes!🎉</blink></h2></div>
+	</section>
+	
+		<!-- redirect to homepage, change href -->
+		<a href="homepage.html">
+			<div class="button" id="home">BACK TO HOMEPAGE</div>
+		</a><br><br><br><br><br><br><br>
+	
+	<script type="text/javascript">
+		const skewed1=document.querySelector('.skewed1');
+		const skewed2=document.querySelector('.skewed2');
+		window.addEventListener('scroll',function(){
+			const value1=-10 + window.scrollY/45;
+			const value2=10 + window.scrollY/-45;
+			skewed1.style.transform="skewY(" + value1 + "deg)";
+			skewed2.style.transform="skewY(" + value2 + "deg)";
+		})
+	</script>
+</body>
+</html>

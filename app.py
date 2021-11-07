@@ -153,10 +153,10 @@ def scrapeScore():
     quesLink = request.args.get("quesgiven")
     difficulty = request.args.get("difficulty")
     oghonor = getHonor(CWID)
-    time.sleep(5)
+    time.sleep(25)
     newHonor = getHonor(CWID)
     while(oghonor == newHonor):
-        time.sleep(5)
+        time.sleep(25)
         newHonor = getHonor(CWID)
         print(newHonor)
     else:
