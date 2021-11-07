@@ -16,8 +16,8 @@ from flask_session import Session
 
 #question files
 import easy
-#import medium
-#import hard
+import medium
+import hard
 
 def getHonor(CWID):
     req_stats = requests.get("https://www.codewars.com/api/v1/users/"+CWID).text
@@ -49,9 +49,9 @@ def checkques(quesAssigned, difficulty, CWID):
     return "Quesno"
 
 def quescheck(quesAssigned, difficulty,CWID):
-    print(quesAssigned)
+    #print(quesAssigned)
     result = checkques(quesAssigned, difficulty,CWID)
-    print("height =" ,result)
+    #print("height =" ,result)
     return result
 
 def uniqueques(dictques, CWID):
@@ -63,7 +63,7 @@ def uniqueques(dictques, CWID):
             if quesAssigned == quesURL:
                 break
         else:
-            print(quesAssigned)
+            #print(quesAssigned)
             return quesAssigned
 
 
@@ -82,6 +82,10 @@ def homepage():
 @app.route('/instructions/', methods=['GET', 'POST'])
 def instructions():
     return render_template("instructions.html")
+
+@app.route('/tutorial/', methods=['GET', 'POST'])
+def tutorial():
+    return render_template("tutorial.html")
 
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
@@ -110,10 +114,10 @@ def form():
         userlink = "https://www.codewars.com/users/"+CWID+"/completed"
         res = requests.get(userlink)
         if res.status_code != 200:
-            print("True")
+            #print("True")
             return render_template("form.html", message = "Enter a valid CodeWars ID")
         else:
-            print("Valid ID")
+            #print("Valid ID")
             try:
                 main.insert_GameInfo(player_id,player_name)
                 main.update_height(0,CWID)
@@ -132,7 +136,7 @@ def form():
 def assignques():
     CWID = session.get("ID")
     difficulty = int(request.args.get('difficulty'))
-    print(difficulty)
+    #print(difficulty)
     easy_ques = easy.easy_dict
     medium_ques = easy.easy_dict
     hard_ques = easy.easy_dict
@@ -158,7 +162,7 @@ def scrapeScore():
     while(oghonor == newHonor):
         time.sleep(25)
         newHonor = getHonor(CWID)
-        print(newHonor)
+        #print(newHonor)
     else:
         return quescheck(quesLink, difficulty, CWID)
 

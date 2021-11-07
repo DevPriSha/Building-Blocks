@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<meta charset="utf-8">
 	<title>GAME TUTORIAL</title>
-	<link rel="stylesheet" type="text/css" href="style.css"> 
+	<link rel="stylesheet" href="{{ url_for('static', filename='tutorial.css') }}"> 
 </head>
 <body>
 	<section class="bg">
@@ -17,7 +18,7 @@
 			<h4>Click on any of the blocks to start solving the question.</h4><br>
 			<p>
 				<!-- <img src="images/Easy Question.png" width="750px" height="350px"> -->
-				<img src="{{url_for(static, Easy Question.png)}}" width="750px" height="350px">
+				<img src="{{url_for('static', filename='images/Easy-Question.png')}}" width="750px" height="350px">
 			</p></div>
 	</section>
 
@@ -27,7 +28,7 @@
 		<h4>Read the prompt, select your language and start solving the question. </h4><br>
 		<p>
 			<!-- <img src="images/step2.png" width="750px" height="350px"> -->
-			<img src="{{url_for(static, step2.png)}}" width="750px" height="350px">
+			<img src="{{url_for('static', filename='images/step2.png')}}" width="750px" height="350px">
 		</p></div>
 	</section>
 
@@ -37,7 +38,7 @@
 		<h4>See if your solution passes all the test cases.</h4><br>
 		<p>
 			<!-- <img src="images/Click.png" width="750px" height="350px"> -->
-			<img src="{{url_for(static, Click.png)}}" width="750px" height="350px">
+			<img src="{{url_for('static', filename='images/Click.png')}}" width="750px" height="350px">
 		</p></div>
 	</section>
 
@@ -47,7 +48,7 @@
 		<h4>To submit your answer click the Attempt button.</h4><br>
 		<p>
 			<!-- <img src="images/Attempt.png" width="750px" height="350px"> -->
-			<img src="{{url_for(static, Attempt.png)}}" width="750px" height="350px">
+			<img src="{{url_for('static', filename='images/Attempt.png')}}" width="750px" height="350px">
 		</p></div>
 	</section>
 
@@ -57,7 +58,7 @@
 		<h4>Click on the submit button to add a block to your wall.<br>BUT BE CAREFUL!! If you don't click the submit button your block will not be added to your wall.</h4><br>
 		<p>
 			<!-- <img src="images/Submit.png" width="750px" height="350px"> -->
-			<img src="{{url_for(static, Submit.png)}}" width="750px" height="350px">
+			<img src="{{url_for('static', filename='images/Submit.png')}}" width="750px" height="350px">
 		</p></div>
 	</section>
 
@@ -67,7 +68,7 @@
 	</section>
 	
 		<!-- redirect to homepage, change href -->
-		<a href="homepage.html">
+		<a href="{{ url_for('homepage' ) }}">
 			<div class="button" id="home">BACK TO HOMEPAGE</div>
 		</a><br><br><br><br><br><br><br>
 	
