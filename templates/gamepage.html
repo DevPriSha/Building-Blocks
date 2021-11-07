@@ -47,6 +47,10 @@
 		var canvas = document.getElementById("DemoCanvas");
 		let questionobject = await fetch("/assignques?"+ new URLSearchParams({difficulty: level}));
 		let questiongiven = await questionobject.text();
+		let a= document.createElement('a');
+		//a.target= '_blank';
+		a.href= questiongiven;
+		a.click();
     	window.open(questiongiven, "_blank");
 		console.log(questiongiven);
 

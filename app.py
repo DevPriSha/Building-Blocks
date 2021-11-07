@@ -3,21 +3,28 @@ import random
 import time
 import json
 import requests
+import os
+import sys
 
 #DB module
 try:
-    import main
+    import main 
 except:
     print("Could not import DB modules")
 
 #flask modules
 from flask import Flask, render_template, request, session
-from flask_session import Session
+#from flask_session import Session
+from pyfladesk import init_gui
 
 #question files
 import easy
 import medium
 import hard
+
+CWID = ""
+height = 0
+start_time = 0
 
 def getHonor(CWID):
     req_stats = requests.get("https://www.codewars.com/api/v1/users/"+CWID).text
@@ -31,12 +38,13 @@ def checkques(quesAssigned, difficulty, CWID):
         quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
         #print("quesassigned:", quesAssigned)
         #print("quesURL:", quesURL)
+        global height
         if quesURL == quesAssigned:
             try:
                 height = main.get_height(CWID)
             except:
                 print("Could not fetch height")
-                height = session.get("height")
+            
             height+= int(difficulty)
             isSolved = True
             try:
@@ -44,7 +52,7 @@ def checkques(quesAssigned, difficulty, CWID):
                 main.update_height(height,CWID)
             except:
                 print("Could not update question status")
-                session["height"] = height
+                #session["height"] = height
             return str(height)
     return "Quesno"
 
@@ -69,11 +77,22 @@ def uniqueques(dictques, CWID):
 
 
 #-----------------------------------------------------------------
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
-app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-Session(app)
+if getattr(sys, 'frozen', False):
+    template_folder = resource_path('templates')
+    static_folder = resource_path('static')
+    app = Flask(__name__, template_folder=template_folder,
+                static_folder=static_folder)
+else:
+    app = Flask(__name__)
+
+# app.config["SESSION_PERMANENT"] = False
+# app.config["SESSION_TYPE"] = "filesystem"
+# Session(app)
 
 @app.route('/')
 def homepage():
@@ -89,7 +108,8 @@ def tutorial():
 
 @app.route('/thankyou/', methods=['GET', 'POST'])
 def thankyou():
-    CWID = session.get("ID")
+    global CWID
+    #CWID = session.get("ID")
     try:
         starttime = main.get_startTime(CWID)
         start_time = float(starttime)
@@ -107,10 +127,11 @@ def form():
     if request.method == 'POST':
         player_name = request.form.get('participantname')
         player_id = request.form.get('participantid')
+        global CWID
         name = player_name
         CWID = player_id
-        session["ID"]=CWID
-        session["NAME"]=name
+        #session["ID"]=CWID
+        #session["NAME"]=name
         userlink = "https://www.codewars.com/users/"+CWID+"/completed"
         res = requests.get(userlink)
         if res.status_code != 200:
@@ -125,7 +146,8 @@ def form():
                 main.update_StartTime(start_time,CWID)
             except:
                 print("Not updated to DBMS")
-                session["height"] = 0
+                #session["height"] = 0
+                height = 0
             return render_template("gamepage.html")
     return render_template("form.html", message = "")
 
@@ -134,7 +156,8 @@ def form():
 
 @app.route('/assignques/', methods=['GET', 'POST'])
 def assignques():
-    CWID = session.get("ID")
+    global CWID
+    #CWID = session.get("ID")
     difficulty = int(request.args.get('difficulty'))
     #print(difficulty)
     easy_ques = easy.easy_dict
@@ -153,7 +176,8 @@ def assignques():
 
 @app.route('/scrapeScore/', methods=['GET', 'POST'])
 def scrapeScore():
-    CWID = session.get("ID")
+    global CWID
+    #CWID = session.get("ID")
     quesLink = request.args.get("quesgiven")
     difficulty = request.args.get("difficulty")
     oghonor = getHonor(CWID)
@@ -167,4 +191,4 @@ def scrapeScore():
         return quescheck(quesLink, difficulty, CWID)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    init_gui(app, window_title='Building Blocks')
