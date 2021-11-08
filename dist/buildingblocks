@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo Welcome to Building Blocks by Innerve ;
+./app ;
+open -a "Google Chrome" http://localhost:5000 ;
+exit;

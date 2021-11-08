@@ -15,7 +15,7 @@ except:
 #flask modules
 from flask import Flask, render_template, request, session
 #from flask_session import Session
-from pyfladesk import init_gui
+#from pyfladesk import init_gui
 
 #question files
 import easy
@@ -191,4 +191,5 @@ def scrapeScore():
         return quescheck(quesLink, difficulty, CWID)
 
 if __name__ == "__main__":
-    init_gui(app, window_title='Building Blocks', width=1920, height=1080)
+    #init_gui(app, window_title='Building Blocks', width=1920, height=1080)
+    app.run(debug=True)
