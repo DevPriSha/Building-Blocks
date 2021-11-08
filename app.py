@@ -191,4 +191,4 @@ def scrapeScore():
         return quescheck(quesLink, difficulty, CWID)
 
 if __name__ == "__main__":
-    init_gui(app, window_title='Building Blocks')
+    init_gui(app, window_title='Building Blocks', width=1920, height=1080)
