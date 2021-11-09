@@ -59,7 +59,19 @@ easy = {
     'Simple Fun #152: Invite More Women?':'https://www.codewars.com/kata/58acfe4ae0201e1708000075/train/',
     'Odd or Even?':'https://www.codewars.com/kata/5949481f86420f59480000e7/train/',
     'Sum of Cubes':'https://www.codewars.com/kata/59a8570b570190d313000037/train/',
-    'Automorphic Number (Special Numbers Series #6)':'https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/'
+    'Automorphic Number (Special Numbers Series #6)':'https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/',
+    'Alphabet wars - reinforces massacre':'https://www.codewars.com/kata/593e2077edf0d3e2d500002d/train/',
+    'Divisor harmony':'https://www.codewars.com/kata/59bf97cd4f98a8b1cd00007e/train/',
+    'Simple missing sum':'https://www.codewars.com/kata/5a941f3a4a6b34edf900006f/train/',
+    'Floating-point Approximation (I)':'https://www.codewars.com/kata/58184387d14fc32f2b0012b2/train/',
+    'String Pyramid':'https://www.codewars.com/kata/5797d1a9c38ec2de1f00017b/train/',
+    'Simple Fun #135: Missing Alphabets':'https://www.codewars.com/kata/58a664bb586e986c940001d5/train/',
+    'TV Remote (wrap)':'https://www.codewars.com/kata/5b2c2c95b6989da552000120/train/',
+    'The Hunger Games - Foxes and Chickens':'https://www.codewars.com/kata/591144f42e6009675300001f/train/',
+    'Sorting on planet Twisted-3-7':'https://www.codewars.com/kata/58068479c27998b11900056e/train/',
+    'Moves in squared strings (IV)':'https://www.codewars.com/kata/56dbf59b0a10feb08c000227/train/',
+    'Calculate the area of a regular n sides polygon inside a circle of radius r':'https://www.codewars.com/kata/5a58ca28e626c55ae000018a/train/',
+    'Tank Truck':'https://www.codewars.com/kata/55f3da49e83ca1ddae0000ad/train/'
 }
 
 easy_dict = {k:v for v,k in easy.items()}
