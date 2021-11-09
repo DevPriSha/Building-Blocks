@@ -18,31 +18,48 @@
 
 # }
 
-newQuesSet = {
-    'Swap Values' : 'https://www.codewars.com/kata/5388f0e00b24c5635e000fc6/train/',
-    'Price of Mangoes' : 'https://www.codewars.com/kata/57a77726bb9944d000000b06/train/',
-    'Beginner Series #1 School Paperwork' : 'https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/',
-    'Will you make it?':'https://www.codewars.com/kata/5861d28f124b35723e00005e/train/',
-    'Geometry Basics: Distance between points in 2D': 'https://www.codewars.com/kata/58dced7b702b805b200000be/train/',
-    'Keep Hydrated!': 'https://www.codewars.com/kata/582cb0224e56e068d800003c/train/',
-    'Grasshopper - Personalized Message' : 'https://www.codewars.com/kata/5772da22b89313a4d50012f7/train/',
-    'Remove exclamation marks':'https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/',
-    'Sum The Strings':'https://www.codewars.com/kata/5966e33c4e686b508700002d/train/',
-    'Cat years, Dog years': 'https://www.codewars.com/kata/5a6663e9fd56cb5ab800008b/train/',
-    'Gravity Flip': 'https://www.codewars.com/kata/5f70c883e10f9e0001c89673/train/',
-    'Count by X': 'https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/',
-    'Thinkful - Logic Drills: Traffic light': 'https://www.codewars.com/kata/58649884a1659ed6cb000072/train/',
-    'Fake Binary':'https://www.codewars.com/kata/57eae65a4321032ce000002d/train/',
-    'Holiday VIII - Duty Free':'https://www.codewars.com/kata/57e92e91b63b6cbac20001e5/train/',
-    'Remove String Spaces':'https://www.codewars.com/kata/57eae20f5500ad98e50002c5/train/',
-    'My head is at the wrong end!':'https://www.codewars.com/kata/56f699cd9400f5b7d8000b55/train/',
-    'Quarter of the year':'https://www.codewars.com/kata/5ce9c1000bab0b001134f5af/train/',
-    'Return Negative':'https://www.codewars.com/kata/55685cd7ad70877c23000102/train/',
-    'Convert a Boolean to a String':'https://www.codewars.com/kata/551b4501ac0447318f0009cd/train/',
-    'Alan Partridge II - Apple Turnover':'https://www.codewars.com/kata/580a094553bd9ec5d800007d/train/',
-    'Is it a number?':'https://www.codewars.com/kata/57126304cdbf63c6770012bd/train/',
-    'Count of positives / sum of negatives':'https://www.codewars.com/kata/576bb71bbbcf0951d5000044/train/',
+# newQuesSet = {
+#     'Swap Values' : 'https://www.codewars.com/kata/5388f0e00b24c5635e000fc6/train/',
+#     'Price of Mangoes' : 'https://www.codewars.com/kata/57a77726bb9944d000000b06/train/',
+#     'Beginner Series #1 School Paperwork' : 'https://www.codewars.com/kata/55f9b48403f6b87a7c0000bd/train/',
+#     'Will you make it?':'https://www.codewars.com/kata/5861d28f124b35723e00005e/train/',
+#     'Geometry Basics: Distance between points in 2D': 'https://www.codewars.com/kata/58dced7b702b805b200000be/train/',
+#     'Keep Hydrated!': 'https://www.codewars.com/kata/582cb0224e56e068d800003c/train/',
+#     'Grasshopper - Personalized Message' : 'https://www.codewars.com/kata/5772da22b89313a4d50012f7/train/',
+#     'Remove exclamation marks':'https://www.codewars.com/kata/57a0885cbb9944e24c00008e/train/',
+#     'Sum The Strings':'https://www.codewars.com/kata/5966e33c4e686b508700002d/train/',
+#     'Cat years, Dog years': 'https://www.codewars.com/kata/5a6663e9fd56cb5ab800008b/train/',
+#     'Gravity Flip': 'https://www.codewars.com/kata/5f70c883e10f9e0001c89673/train/',
+#     'Count by X': 'https://www.codewars.com/kata/5513795bd3fafb56c200049e/train/',
+#     'Thinkful - Logic Drills: Traffic light': 'https://www.codewars.com/kata/58649884a1659ed6cb000072/train/',
+#     'Fake Binary':'https://www.codewars.com/kata/57eae65a4321032ce000002d/train/',
+#     'Holiday VIII - Duty Free':'https://www.codewars.com/kata/57e92e91b63b6cbac20001e5/train/',
+#     'Remove String Spaces':'https://www.codewars.com/kata/57eae20f5500ad98e50002c5/train/',
+#     'My head is at the wrong end!':'https://www.codewars.com/kata/56f699cd9400f5b7d8000b55/train/',
+#     'Quarter of the year':'https://www.codewars.com/kata/5ce9c1000bab0b001134f5af/train/',
+#     'Return Negative':'https://www.codewars.com/kata/55685cd7ad70877c23000102/train/',
+#     'Convert a Boolean to a String':'https://www.codewars.com/kata/551b4501ac0447318f0009cd/train/',
+#     'Alan Partridge II - Apple Turnover':'https://www.codewars.com/kata/580a094553bd9ec5d800007d/train/',
+#     'Is it a number?':'https://www.codewars.com/kata/57126304cdbf63c6770012bd/train/',
+#     'Count of positives / sum of negatives':'https://www.codewars.com/kata/576bb71bbbcf0951d5000044/train/',
 
+# }
+
+easy = {
+    'Simple equation reversal':'https://www.codewars.com/kata/5aa3af22ba1bb5209f000037/train/',
+    'Filter the number':'https://www.codewars.com/kata/55b051fac50a3292a9000025/train/',
+    'Sum of Triangular Numbers':'https://www.codewars.com/kata/580878d5d27b84b64c000b51/train/',
+    'Highest and Lowest':'https://www.codewars.com/kata/554b4ac871d6813a03000035/train/',
+    'TV Remote':'https://www.codewars.com/kata/5a5032f4fd56cb958e00007a/train/',
+    'Series of integers from m to n':'https://www.codewars.com/kata/5841f680c5c9b092950001ae/train/',
+    'Sum of odd numbers':'https://www.codewars.com/kata/55fd2d567d94ac3bc9000064/train/',
+    'Floating-point Approximation (III)':'https://www.codewars.com/kata/5b0c0ec907756ffcff00006e/train/',
+    'Alphabetical Addition':'https://www.codewars.com/kata/5d50e3914861a500121e1958/train/',
+    'Row Weights':'https://www.codewars.com/kata/5abd66a5ccfd1130b30000a9/train/',
+    'Simple Fun #152: Invite More Women?':'https://www.codewars.com/kata/58acfe4ae0201e1708000075/train/',
+    'Odd or Even?':'https://www.codewars.com/kata/5949481f86420f59480000e7/train/',
+    'Sum of Cubes':'https://www.codewars.com/kata/59a8570b570190d313000037/train/',
+    'Automorphic Number (Special Numbers Series #6)':'https://www.codewars.com/kata/5a58d889880385c2f40000aa/train/'
 }
 
-easy_dict = {k:v for v,k in newQuesSet.items()}
+easy_dict = {k:v for v,k in easy.items()}
