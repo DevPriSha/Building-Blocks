@@ -14,15 +14,11 @@ body,html{
   background-color: #CE2822; 
   border: none;
   color: black;
-  padding: 18px 38px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  /*transform: translateX(600px);
-  margin-top: 20px;
-  margin-left: 560px;*/
   font-style: calibri;
 }
 .endbutton:hover{
@@ -43,26 +39,21 @@ body,html{
     font-weight: bold;
     font-size: 1.5rem;
     cursor: pointer;
+    height: 70px;
+    width: 180px;
 }
 .largebutton{
   background-color: #F2FA16; 
   color: black;
-  height: 80px;
-  width: 90px;
-  padding: 18px 48px;
+  height: 170px;
+  width: 180px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  /*transform: translateX(600px);
-  margin-top: 40px;
-  margin-left: 555px;*/
-  /*border-radius: ;
-  border: none;*/
   border-radius: 20px;
   font-style: calibri;
-  padding-top: 70px;
 }
 .largebutton:hover{
     cursor: pointer;
@@ -78,26 +69,22 @@ body,html{
     font-weight: bold;
     font-size: 1.5rem;
     cursor: pointer;
+    height: 170px;
+    width: 180px;
 }
 .mediumbutton{
   background-color: #FA9F16; 
   border: none;
   color: black;
-  height: 50px;
-  width: 90px;
-  padding: 18px 48px;
+  height: 130px;
+  width: 180px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  /*transform: translateX(600px);
-  margin-top: 30px;
-  margin-left: 555px;*/
-  /*border: none;*/
   border-radius: 20px;
   font-style: calibri;
-  padding-top: 50px;
 }
 .mediumbutton:hover{
     cursor: pointer;
@@ -113,23 +100,20 @@ body,html{
     font-weight: bold;
     font-size: 1.5rem;
     cursor: pointer;
+    height: 130px;
+    width: 180px;
 }
 .smallbutton{
   background-color: red; 
   border: none;
   color: black;
-  height: 20px;
-  width: 90px;
-  padding: 18px 48px;
+  height: 55px;
+  width: 180px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
   text-align: center;
- /* transform: translateX(600px);
-  margin-top: 10px;
-  margin-left: 555px;*/
-  /*border: none;*/
   border-radius: 20px;
   font-style: calibri;
 }
@@ -147,6 +131,8 @@ body,html{
     font-weight: bold;
     font-size: 1.5rem;
     cursor: pointer;
+    height: 55px;
+    width: 180px;
 }
 .height{
   background-color: white; 
@@ -158,9 +144,6 @@ body,html{
   display: inline-block;
   font-size: 20px;
   text-align: center;
-  /*transform: translateX(600px);
-  margin-top: 40px;
-  margin-left: 555px;*/
   border: none;
   border-radius: 20px;
   font-style: calibri;
@@ -170,12 +153,6 @@ body,html{
     top: 5%;
     left: 85%;
 }
-
-/* canvas { border: 1px solid black;
-    position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);} */
 .canvas {
     width: 15%;
     height: auto;
