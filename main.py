@@ -27,3 +27,7 @@ def get_time(id):
 def get_startTime(id):
     start_time = Game_Info.get_startTime([id])
     return start_time
+
+def existing(CWID):
+    flag = Game_Info.existing(CWID)
+    return flag
