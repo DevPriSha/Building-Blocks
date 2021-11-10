@@ -75,7 +75,7 @@ easy = {
 }
 
 easy_dict = {k:v for v,k in easy.items()}
-easy_dict += {"https://www.codewars.com/kata/554e4a2f232cdd87d9000038/train/python":"Complementary DNA",
+ed = {"https://www.codewars.com/kata/554e4a2f232cdd87d9000038/train/python":"Complementary DNA",
         "https://www.codewars.com/kata/560d6ebe7a8c737c52000084/train/python":"Invisible cubes",
         "https://www.codewars.com/kata/54c27a33fb7da0db0100040e/train/python":"You're a square!",
         "https://www.codewars.com/kata/5aa3af22ba1bb5209f000037/train/python":"Simple equation reversal",
@@ -100,3 +100,4 @@ easy_dict += {"https://www.codewars.com/kata/554e4a2f232cdd87d9000038/train/pyth
         "https://www.codewars.com/kata/563f0c54a22b9345bf000053/train/python":"A disguised sequence (I)",
         "https://www.codewars.com/kata/566be96bb3174e155300001b/train/python":"Ball Upwards",
         }
+easy_dict.update(ed)
