@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap");
 *{
 	margin: 0;
 	padding: 0;
@@ -202,4 +203,16 @@ section .color:nth-child(3){
 	cursor: pointer;
 	margin-bottom: 20px;
 	font-weight: 600;
+}
+.error{
+	text-align: center;
+}
+.errormessage{
+	font-family: 'Signika Negative', sans-serif;
+	position: relative;
+	color: white;
+	font-size: 1.2em;
+	font-weight: 1000;
+	letter-spacing: 1px;
+	margin-bottom: 40px;
 }
