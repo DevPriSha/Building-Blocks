@@ -15,7 +15,7 @@
 		0
 	</div>
 
-	<div class="canvas" id="canvasid"><canvas id="DemoCanvas" width="200" height="500"></canvas></div> 
+	<div class="canvas" id="canvasid"><canvas id="DemoCanvas" width="200" height="700"></canvas></div> 
 
 	<div class="smallbutton" id="small">
 		<input type="submit" name="buttonsmall" id="easyquestion" value="SMALL">
@@ -40,7 +40,7 @@
 	var questiongiven = "";
 	async function assignques(level)
 	{
-		var y = 500 - (height*10);
+		var y = 700 - (height*10);
 		level = parseInt(level);
 		if(y<0){
 			//print exception that max height overflow
@@ -50,7 +50,7 @@
 		let questionobject = await fetch("/assignques?"+ new URLSearchParams({difficulty: level}));
 		let questiongiven = await questionobject.text();
 		let a= document.createElement('a');
-		//a.target= '_blank';
+		a.target= '_blank';
 		a.href= questiongiven;
 		a.click();
     	window.open(questiongiven, "_blank");
@@ -63,16 +63,16 @@
 			return;
 		}
 		height = parseInt(datastr);
-		y = 500 - (height*10);
+		y = 700 - (height*10);
 		console.log(height);
 		
 		if (height!=NaN){
 		if (canvas.getContext) 
 		{
   				var ctx = canvas.getContext('2d');
-  				if (level == 5){
-  					ctx.fillStyle='#F2FA16'; }
   				if (level == 3){
+  					ctx.fillStyle='#F2FA16'; }
+  				if (level == 2){
     				ctx.fillStyle='#FA9F16'}
   				if (level == 1){
     				ctx.fillStyle='#FF0000'}// color of fill
@@ -92,10 +92,10 @@
       		assignques('1');
   		});
   		$('#mediumquestion').click(() => {
-      		assignques('3');
+      		assignques('2');
   		});
   		$('#difficultquestion').click(() => {
-      		assignques('5');
+      		assignques('3');
   		});
 
   		$('#game_end').click(async () => {
