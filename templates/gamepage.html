@@ -12,7 +12,7 @@
 		<b>SCORE</b>
 	</div>
 	<div class="height" id="ht">
-		0
+		{{height}}
 	</div>
 
 	<div class="canvas" id="canvasid"><canvas id="DemoCanvas" width="200" height="700"></canvas></div> 
@@ -36,7 +36,22 @@
 
 </body>
 <script>
-	var height = 0;
+	var height = parseInt(document.getElementById("ht").innerHTML); //change it to value from flask
+	if(height!=0){
+  var y = 700 - (height*10);
+  var canvas = document.getElementById("DemoCanvas");
+if (canvas.getContext) 
+{
+  var ctx = canvas.getContext('2d');
+  ctx.fillStyle='#cccccc';
+  ctx.fillRect(0, y, 200, height*10);
+  ctx.beginPath();
+  ctx.moveTo(0,y);
+  ctx.lineTo(200,y);
+  ctx.closePath();
+  ctx.stroke();
+}
+}
 	var questiongiven = "";
 	async function assignques(level)
 	{
@@ -49,6 +64,10 @@
 		var canvas = document.getElementById("DemoCanvas");
 		let questionobject = await fetch("/assignques?"+ new URLSearchParams({difficulty: level}));
 		let questiongiven = await questionobject.text();
+		if (questiongiven == "no question found") {
+			alert("You have used all the blocks of this type!");
+			return;
+		}
 		let a= document.createElement('a');
 		a.target= '_blank';
 		a.href= questiongiven;

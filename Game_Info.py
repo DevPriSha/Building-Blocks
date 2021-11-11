@@ -126,16 +126,15 @@ def get_startTime(info_list):
     return time
 
 def existing(info_list):
-    command = "SELECT codewrasid FROM game_info WHERE codewarsid = %s;"
+    command = "SELECT codewarsid FROM game_info WHERE codewarsid = %s;"
     conn = None
-    time = 0
     try:
         params = config()
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
         cur.execute(command,info_list)
 
-        flag = cur.fetchone()[0]
+        flag = cur.fetchone()
 
         conn.commit()
         cur.close()

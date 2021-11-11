@@ -21,6 +21,7 @@ from flask import Flask, render_template, request, session
 import easy
 import medium
 import hard
+import testingques
 
 CWID = ""
 height = 0
@@ -36,8 +37,8 @@ def checkques(quesAssigned, difficulty, CWID):
     quescompleted = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
     for ques in quescompleted["data"]:
         quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
-        #print("quesassigned:", quesAssigned)
-        #print("quesURL:", quesURL)
+        print("quesassigned:", quesAssigned)
+        print("quesURL:", quesURL)
         global height
         if quesURL == quesAssigned:
             try:
@@ -92,7 +93,7 @@ def uniqueques(dictques, CWID, level):
                 return "no question found"
             elif(level==2 and medium==dictques):
                 return "no question found"
-            else:
+            elif(level==3 and hard==dictques):
                 return "no question found"
         else:
             #print(quesAssigned)
@@ -164,15 +165,21 @@ def form():
         else:
             #print("Valid ID")
             try:
-                main.insert_GameInfo(player_id,player_name)
-                main.update_height(0,CWID)
-                start_time = time.time()
-                main.update_StartTime(start_time,CWID)
+                if main.existing(CWID) and main.get_time(CWID) != None:
+                    return render_template("form.html", message = "You have already played the game")
+                elif main.existing(CWID) and main.get_time(CWID) == None:
+                    global height
+                    height = main.get_height(CWID)
+                else:
+                    main.insert_GameInfo(player_id,player_name)
+                    main.update_height(0,CWID)
+                    start_time = time.time()
+                    main.update_StartTime(start_time,CWID)
             except:
                 print("Not updated to DBMS")
                 #session["height"] = 0
                 height = 0
-            return render_template("gamepage.html")
+            return render_template("gamepage.html", height = str(height))
     return render_template("form.html", message = "")
 
 #----------------------------------------------------------------------
@@ -185,7 +192,7 @@ def assignques():
     difficulty = int(request.args.get('difficulty'))
     #print(difficulty)
     easy_ques = easy.easy_dict
-    medium_ques = medium.med_dict
+    medium_ques = medium.medium_dict
     hard_ques = hard.hard_dict
     if difficulty == 1:
         quesAssigned = uniqueques(easy_ques, CWID,1)
@@ -216,7 +223,7 @@ def scrapeScore():
 
 if __name__ == "__main__":
     #init_gui(app, window_title='Building Blocks', width=1920, height=1080)
-    app.run(debug=True)
+    app.run()
 
 
     # requests.exceptions.ConnectionError:

@@ -45,6 +45,8 @@
 
 # }
 
+# easy_dict = {k:v for v,k in quesSet.items()}
+
 easy = {
     'Simple equation reversal':'https://www.codewars.com/kata/5aa3af22ba1bb5209f000037/train/',
     'Filter the number':'https://www.codewars.com/kata/55b051fac50a3292a9000025/train/',

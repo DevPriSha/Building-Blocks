@@ -29,5 +29,5 @@ def get_startTime(id):
     return start_time
 
 def existing(CWID):
-    flag = Game_Info.existing(CWID)
+    flag = Game_Info.existing([CWID])
     return flag
