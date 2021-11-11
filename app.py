@@ -54,7 +54,7 @@ def checkques(quesAssigned, difficulty, CWID):
                 print("Could not update question status")
                 #session["height"] = height
             return str(height)
-    return "Quesno"
+    return height 
 
 def quescheck(quesAssigned, difficulty,CWID):
     #print(quesAssigned)
@@ -62,14 +62,38 @@ def quescheck(quesAssigned, difficulty,CWID):
     #print("height =" ,result)
     return result
 
-def uniqueques(dictques, CWID):
-    completequesuser = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
+def uniqueques(dictques, CWID, level):
+    while True:
+        try:
+            completequesuser = json.loads(requests.get("https://www.codewars.com/api/v1/users/"+CWID+"/code-challenges/completed?page=0").text)
+        except requests.exceptions.ConnectionError:
+            pass
+        else:
+            break
+
+
+    easy =[]
+    medium=[]
+    hard=[]
     while True:
         quesAssigned = random.choice(list(dictques.keys()))
+        
         for ques in completequesuser["data"]:
             quesURL = 'https://www.codewars.com/kata/'+ques["id"]+'/train/'
             if quesAssigned == quesURL:
+                if(level==1):
+                    easy += quesAssigned
+                elif(level==2):
+                    medium+=quesAssigned
+                else:
+                    hard+=quesAssigned
                 break
+            if(level==1 and easy==dictques):
+                return "no question found"
+            elif(level==2 and medium==dictques):
+                return "no question found"
+            else:
+                return "no question found"
         else:
             #print(quesAssigned)
             return quesAssigned
@@ -161,14 +185,14 @@ def assignques():
     difficulty = int(request.args.get('difficulty'))
     #print(difficulty)
     easy_ques = easy.easy_dict
-    medium_ques = easy.easy_dict
-    hard_ques = easy.easy_dict
+    medium_ques = medium.med_dict
+    hard_ques = hard.hard_dict
     if difficulty == 1:
-        quesAssigned = uniqueques(easy_ques, CWID)
+        quesAssigned = uniqueques(easy_ques, CWID,1)
+    elif difficulty == 2:
+        quesAssigned = uniqueques(medium_ques, CWID,2)
     elif difficulty == 3:
-        quesAssigned = uniqueques(medium_ques, CWID)
-    elif difficulty == 5:
-        quesAssigned = uniqueques(hard_ques, CWID)
+        quesAssigned = uniqueques(hard_ques, CWID,3)
     else:
         print("INVALID DIFFICULTY")
 
@@ -193,3 +217,6 @@ def scrapeScore():
 if __name__ == "__main__":
     #init_gui(app, window_title='Building Blocks', width=1920, height=1080)
     app.run(debug=True)
+
+
+    # requests.exceptions.ConnectionError:
