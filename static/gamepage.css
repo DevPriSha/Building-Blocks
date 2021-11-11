@@ -150,7 +150,27 @@ body,html{
 }
 #ht{
     position: fixed;
-    top: 5%;
+    top: 7%;
+    left: 85%;
+}
+.height1{
+    color: yellow;
+  background-color: transparent; 
+  height: 20px;
+  width: 90px;
+  padding: 18px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  /*text-align: center;*/
+  border: none;
+  border-radius: 20px;
+  font-style: arial;
+}
+#ht1{
+    position: fixed;
+    top: 0.5%;
     left: 85%;
 }
 .canvas {
